@@ -1,0 +1,164 @@
+
+*{
+    margin: 0px;
+    padding: 0%;
+    box-sizing: border-box;
+}
+body {
+    font-family: "Baloo Tamma 2", !important;
+    font: 1rem/1.5 var(--bs-font-san-serif);
+    background-color: #f4f4f9;
+}
+
+
+#contenedor {
+    max-width: 70em;
+    margin: 0 auto;
+    background-color: #fcfcfc;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    border: 1px solid #ddd; /* Borde gris claro */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+h1 {
+    text-align: center;
+    margin: 1em;
+    margin-bottom: 2em;
+    color: #333;
+}
+img {
+    width: 10em;
+}
+
+.filtro {
+    display: flex;
+    justify-content: space-evenly;
+    
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.filtro label {
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+select{
+    width: 100%;
+    height: 2.4em;
+}
+  
+.columna-izquierda,
+.columna-centro, .columna-derecha,
+.btn-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.columna-izquierda,
+.columna-centro, .columna-derecha,
+.btn-panel label {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.btn-panel {
+    margin-left: 20px;
+    margin-top: 10px;}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    box-shadow: #343a40;
+    border: 1px solid #ddd; /* Borde gris claro */
+    text-align: center;
+}
+
+th{
+    text-align: center;
+    padding: 20px;
+}
+
+.estado {
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.estado.enrevision {
+    
+    color: #cc0000;
+}
+
+.estado.paraprocesar {
+    
+    color: #c58700;
+}
+
+.estado.procesado {
+   
+    color: #388e3c;
+}
+
+
+
+#buscar, #visualizar {
+    background-color: #c9f7f5 !important;
+    color: #146965 !important;
+    border: none;
+    transition: background-color 0.3s, box-shadow 0.3s ease !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2) !important;
+    
+}
+
+#buscar{
+    margin: 27px 0px;
+    width: 50%;
+}
+#buscar:hover, #visualizar:hover {
+    background-color: #1bc5bd !important;
+    color: white !important;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3) !important;
+}
+
+.btn-outline-danger{
+    width: 10em;
+}
+
+#dropdownMenuButton{
+    background: #343a40;
+    border: none;
+    color: #838583 
+}
+
+#dropdownMenuButton:hover{
+    color: #ddd;
+}    
+
+.dropdown-item{
+    text-align: center;
+}
+
+
+#borrar{
+    background-color: #838583;
+    margin-top: 15px;
+    transition: background-color 0.3s, box-shadow 0.3s ease !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2) !important;
+  
+    
+}
+#borrar:hover{
+    background-color: #a4a7a4;
+    color: #333;   
+}
+
+.paginado{
+    margin-top: 2em;
+}
+select{
+    border-radius: 5px;
+}

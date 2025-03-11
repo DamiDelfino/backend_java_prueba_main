@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/styles_popup.css}">
+    <link rel="shortcut icon" href="/imagenes/logo.ico" type="image/x-icon">
+    <title>Recupero De Contraseña</title>
+
+</head>
+
+<body>
+    <img src="/imagenes/DAJUDECO.png" alt="Logo de DAJuDeCO">
+    <div class="container">
+        <h2>Recupero de contraseña</h2>
+        <p>Ingrese el correo electrónico, el cual esta registrado, para que le enviemos el cambio de contraseña</p>
+        <label for="mail"><strong>Mail</strong></label>
+        <input type="email" id="mail" name="mail" placeholder="Ingrese su mail">
+        
+    </div>
+    <!-- Botón para enviar o cancelar-->
+    <div class="botones">
+        <button onclick="enviar()" id="enviar">Recuperar contraseña</button>
+        <button onclick="window.close()" id="cancelar">Cancelar</button>
+    </div>
+
+    <!--Scripts-->
+    <script>
+        function enviar() {
+            var email = document.getElementById('mail').value;
+            if (email == "") {
+                alert("Por favor ingrese un mail")
+            } else {
+                alert("Su pedido fue remitido.\n" +
+                    "Enviaremos un mail a '" + email + "' con la nueva contraseña provisoria");
+                window.close();
+            }
+
+        }
+    </script>
+</body>
+
+</html>

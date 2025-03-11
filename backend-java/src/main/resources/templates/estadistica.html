@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RECOPILACIÓN INFORMACIÓN ESTADISTICA</title>
+    <link rel=icon href="/imagenes/logo.ico">
+    <script th:src="@{/js/estadistica.js}"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/styles_estadistica.css}">
+</head>
+
+<body>
+     <!--Aca esta el Navbar extraido de NavbarAdmin-->
+     <div th:replace="~{navbarAdmin :: navbar}"></div>
+
+    <div class="container mt-4" id="contenedor">
+        <h1 class="text-center">ADMINISTRADOR DE CAUSAS</h1>
+        <h2 class="text-center">Estadísticas</h2>
+
+        <div class="row">
+            <!-- Primera tarjeta -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header text-white">
+                        Requerimiento GAFI
+                    </div>
+                    <h3>Cantidad de Respuestas: <strong>120</strong></h3>
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="total">Detalle por tipo de autoridad</th>
+                                    <th class="total">Cantidad</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Cámara Casación</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td>Cámara Federal</td>
+                                    <td>9</td>
+                                </tr>
+                                <tr>
+                                    <td>Juzgados Federales</td>
+                                    <td>72</td>
+                                </tr>
+                                <tr>
+                                    <td>Juzgados Penales Económico</td>
+                                    <td>11</td>
+                                </tr>
+                                <tr>
+                                    <td>Tribunales Federales</td>
+                                    <td>24</td>
+                                </tr>
+                                <tr>
+                                    <td>Tribunales Penales Económico</td>
+                                    <td>3</td>
+                                </tr>
+                                <tr class="font-weight-bold">
+                                    <td class="total">Total General</td>
+                                    <td class="total">120</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- Gráfico de la primera tarjeta -->
+                        <div id="chart1" class="chart"></div>
+                    </div>
+                    <div class="info">
+                        <hr>
+                        <p>
+                            <strong> Porcentaje de respuesta por Autoridades: 68%</strong>
+                        </p>
+                        <p>
+                            <strong> Porcentaje de autoridades que aportaron información: 70%</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Segunda tarjeta -->
+            <div class="col-md-6 mb-4">
+                <div class="card h-100">
+                    <div class="card-header text-white">
+                        Requerimiento OCDE
+                    </div>
+                    <h3>Cantidad de Respuestas: <strong>100</strong></h3>
+                    <div class="card-body">
+                        <table class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="total">Detalle por tipo de autoridad</th>
+                                    <th class="total">Cantidad</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Cámara Casación</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td>Cámara Federal</td>
+                                    <td>7</td>
+                                </tr>
+                                <tr>
+                                    <td>Juzgados Federales</td>
+                                    <td>63</td>
+                                </tr>
+                                <tr>
+                                    <td>Juzgados Penales Económico</td>
+                                    <td>11</td>
+                                </tr>
+                                <tr>
+                                    <td>Tribunales Federales</td>
+                                    <td>16</td>
+                                </tr>
+                                <tr>
+                                    <td>Tribunales Penales Económico</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr class="font-weight-bold">
+                                    <td class="total">Total General</td>
+                                    <td class="total">100</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!-- Gráfico de la segunda tarjeta -->
+                        <div id="chart2" class="chart" style="margin:10px;"></div>
+                    </div >
+                    <!--Información de respuestas-->
+                    <div class="info">
+                        <hr>
+                        <p>
+                            <strong> Porcentaje de respuesta por Autoridades: 57%</strong>
+                        </p>
+                        <p>
+                            <strong> Porcentaje de autoridades que aportaron información: 46%</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+    
+
+    <!--bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.0/echarts.min.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RECOPILACIÓN INFORMACIÓN ESTADISTICA</title>
+    <link rel=icon href="/imagenes/logo.ico">
+    <script th:src="@{/js/inicio.js}"></script>
+    <link rel="stylesheet" th:href="@{/css/styles_login.css}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- Login-->
+    <div class="container">
+        <div class="logos">
+            <img src="/imagenes/DAJUDECO.png" alt="Logo D.A.Ju.De.Co">
+            <img class="ocde" src="/imagenes/download-removebg-preview.png" alt="OCDE">
+            <img class="gafi" src="/imagenes/gaf-removebg-preview.png" alt="GAFI">
+        </div>
+        <h1>RECOPILACIÓN <br> INFORMACIÓN ESTADISTICA</h1>
+        <div class="login">
+            <div class="input">
+            <img class="img-usu" src="/imagenes/cuenta-de-usuario.png" alt="usuario">
+            <input type="text" id="usuario" name="usuario" placeholder="Usuario"><br>
+        </div>
+        <div class="input">
+            <img class="img-pss" src="/imagenes/cerrar-con-llave.png" alt="password">
+            <input type="password" id="contrasena" name="contrasena" placeholder="Contraseña" maxlength=8;><br>
+        </div>
+            <button onclick="validarContrasena()">
+                Ingresar
+            </button>
+            <br>
+            <a th:attr="onclick='window.open(\'' + @{/popup} + '\',\'mypopuptitle\',\'width=600,height=400\')'">Me olvidé la
+                contraseña</a>
+                
+            <br><br><br>
+             <div>
+                <!-- Texto que al seleccionarlo se expande con info-->
+                <p id="extension">Contacto</p>
+
+                <!-- Contacto oculto por defecto -->
+                <div id="contacto" class="contacto" style="display: none;">
+                    <p>Nuestros teléfonos de contacto son 011-4839-9735/32.</p><br>
+                    <p>Nuestros teléfonos de asistencia tecnológica es 011-4556-9665.</p><br>
+                    <p>Nuestro mail es <a id="mail" href="mailto:enar@dajudeco.gob.ar">enar@dajudeco.gob.ar</a></p><br>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+ 
+</body>
+
+</html>

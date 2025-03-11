@@ -1,0 +1,147 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'lato';
+    background-image: url('../imagenes/fondo.jpeg');
+    /* Asegúrate de que la ruta sea correcta */
+    background-size: cover;
+    /* Hace que la imagen cubra toda la pantalla */
+    background-position: center;
+    /* Centra la imagen en la pantalla */
+    background-repeat: no-repeat;
+    /* Evita que la imagen se repita */
+    background-attachment: fixed;
+    /* Mantiene la imagen fija al hacer scroll */
+  }
+  
+  .container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 37.5em;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.973);
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .logos{
+    padding: 0%;
+    margin: 0px;
+    margin-right: 1.5em;
+    display: flex; /* Activa el modelo flex */
+    justify-content: center; /* Centra las imágenes horizontalmente */
+    gap: 10px; /* Espacio entre las imágenes (opcional) */
+  
+  }
+  
+  img {
+    display: block;
+    width: 25em;
+    margin: auto;
+  }
+  .ocde{
+    width: 3.75em;
+  }
+  .gafi{
+    width: 1.75em;
+    
+  }
+  .img-usu, .img-pss{
+    width: 1em;
+  }
+  
+  .input{
+    display: flex; 
+    align-items: center; 
+    gap: 10px; /* Espacio entre la imagen y el input */
+    margin-bottom: 15px; 
+  }
+  input[type="text"], input[type="password"] {
+    padding: 8px; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    flex: 1; 
+  }
+  
+  p {
+    text-align: left;
+  }
+  
+  input {
+    height: 2em;
+  }
+  
+  .login {
+    display: grid;
+    place-items: center;
+  }
+  
+  button {
+    background-color: #1a61a3;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 7em;
+    height: 3em;
+  }
+  
+  button:hover {
+    background-color: #a6c9e9;
+    color: #1a61a3;
+  }
+  
+  a {
+    font-size: 0.65em;
+    color: #857d7c;
+  }
+  
+  a:hover {
+    color: #575454;
+  }
+  
+  .contacto {
+    background-color: #f9f9f9;
+    border-top: 1px solid #ddd;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+    font-size: 0.7em;
+    font-family: "Lato";
+  }
+  
+  .lato-regular {
+    font-family: "Lato", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  #extension {
+    font-size: 0.8em;
+  }
+  
+  #mail {
+    font-size: 1em;
+    color: black;
+    text-decoration: none;
+  }
+  
+  #mail:hover {
+    font-size: 1em;
+    color: blue;
+  }

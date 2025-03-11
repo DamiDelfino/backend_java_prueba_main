@@ -1,0 +1,320 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    
+}
+
+#contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+.navbar {
+    background-color: #343a40 !important;
+    display: flex;
+    justify-content: space-between;
+}
+.navbar-logo {
+    width: 10em; /* Tamaño reducido de la imagen */
+    height: auto; /* Mantiene la proporción */
+}
+
+
+caption {
+    caption-side: top;
+    text-align: left; /* Puedes ajustar la alineación a 'center' o 'right' según lo necesites */
+    font-weight: bold; /* O cualquier otro estilo que desees */
+}
+
+h3{
+    text-align: center;
+    padding: 5px;
+    background-color: #aeb2ec;
+}
+label{
+    margin-top: 1em;
+}
+select{
+    max-width: 15rem;
+    height: 2em;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+caption {
+    font-weight: bold;
+    font-size: 16px;
+    padding: 10px;
+    
+}
+
+.datos_causa {
+    background-color: #cfe2ff;
+    
+}
+
+.estado_procesal {
+    background-color: #f8d7da;
+    
+
+
+}
+
+.sentencia {
+    background-color: #cff4fc;
+    
+
+}
+
+.part_otros_act {
+    background-color: #d1e7dd;
+    
+    padding: 10px;
+
+}
+
+.pers_fisc {
+    background-color: #fff3cd;
+   
+}
+
+.fun_pub_inv{
+    background-color: #fff3cd ;
+   
+}
+
+.per_jur{
+    background-color: #d1e7dd;
+    
+}
+
+.exhortos{
+    background-color:#d1e7dd;
+    
+}
+
+.recupero {
+    background-color: #e2e3e5; /* Ajusta este color según tus necesidades */
+    
+}
+.obs{
+    background: #f8d7da;
+}
+
+
+
+
+
+
+th,
+td,
+caption {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    color: #000;
+    
+}
+
+.usuario {
+    text-align: right;
+}
+
+
+
+
+img {
+    width: 10em;
+}
+
+
+#adjuntar{
+    margin: 20px 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    
+}
+
+.botones{
+    position: absolute;
+    right: 35vh;
+    padding: 20px;
+    
+}
+#observacion{
+    height: 7em;
+    width: 70em;
+    resize: none;
+}
+
+
+
+
+.senten{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: #fffdfd;
+    margin-top: 5px;
+}
+span{
+    background-color: #928f8f;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+/* Estilos para el modal */
+.modal {
+    display: none; /* Oculto por defecto */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Contenedor del modal */
+.modal-content {
+    background-color: #fff;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 30%;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Espacio entre botones */
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Espacio entre botones */
+}
+
+
+
+/* Estilos para pantallas hasta 375px (iPhone XR en retrato) */
+@media (max-width: 375px) {
+    h1 {
+        font-size: 1.5em;
+    }
+
+    table {
+        font-size: 0.9em;
+    }
+
+    th,
+    td {
+        padding: 10px;
+    }
+
+    .edit-btn {
+        padding: 4px 8px;
+        font-size: 0.9em;
+    }
+
+    .usuario {
+        font-size: 0.9em;
+    }
+
+    img {
+        width: 8em;
+    }
+    .botones{
+        position: absolute;
+        right: 1vh;
+        padding: 20px;
+        
+    }
+}
+
+
+
+/* Estilos para pantallas más pequeñas */
+@media (max-width: 320px) {
+    h1 {
+        font-size: 1.3em;
+    }
+
+    table {
+        font-size: 0.8em;
+    }
+
+    th,
+    td {
+        padding: 8px;
+    }
+
+    .edit-btn {
+        padding: 3px 6px;
+        font-size: 0.8em;
+    }
+
+    .usuario {
+        font-size: 0.8em;
+    }
+
+    img {
+        width: 6em;
+    }
+    .botones{
+        position: absolute;
+        right: 1vh;
+        padding: 20px;
+        
+    }
+}
+
+
+/* Estilos para alinear tablas de dos columnas */
+.tabla-dos-columnas {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+/* Cada tabla dentro de la fila flex debe ocupar el 48% para que entren dos por fila */
+.tabla-dos-columnas table {
+    width: 48%;
+}
+
+/* Mantener los colores específicos de cada tabla */
+.estado_procesal, .sentencia, .fun_pub_inv, .part_otros_act {
+    width: 100%; /* Ajuste del ancho para tablas de dos columnas */
+}
+
+/* Ajustar el scroll en caso de pantallas pequeñas */
+@media (max-width: 768px) {
+    .tabla-dos-columnas {
+        display: block; /* Cambia a una sola columna en pantallas pequeñas */
+    }
+
+    .tabla-dos-columnas table {
+        width: 100%; /* Cada tabla ocupará todo el ancho */
+    }
+}

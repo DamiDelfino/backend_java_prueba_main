@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RECOPILACIÓN INFORMACIÓN ESTADISTICA</title>
+    <link rel=icon href="/imagenes/logo.ico">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/styles_menu.css}">
+
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark " style="background-color: #343a40 !important;">
+        <div class="container d-flex align-items-center">
+            <img src="/imagenes/DAJUDECO.png" alt="Logo de DAJUDECO" class="navbar-logo mr-3">
+            <a class="navbar-brand" th:href="@{principal}">Sistema Estadístico</a>
+
+            <!-- Menú Desplegable -->
+            <div class="dropdown">
+                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Menú
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" th:href="@{principal}">Requerimientos</a>
+                        <hr>
+                    <button type="button" class="btn btn-outline-danger"
+                    th:attr="onclick='window.location.href=\'' + @{/inicio} + '\''">Cerrar Sesión</button>
+                </div>
+
+            </div>
+
+
+        </div>
+    </nav>
+   
+    <div class="container mt-4" id="contenedor">
+        <h1 class="text-center">RECOPILACIÓN INFORMACIÓN ESTADÍSTICA</h1>
+        <h2 class="text-center">GAFI - OCDE</h2>
+        <p class="usuario text-left">Periodo <b>Febrero 2024</b></p>
+        <p class="usuario text-right">usuario: <b>Autoridad XXXX</b></p>
+
+
+        <table class="table table-bordered mt-4">
+            <thead class="text-white" style="background-color: #094a8a !important;">
+                <tr>
+                    <th>Nro Expediente</th>
+                    <th>Delito</th>
+                    <th>Año Inicio</th>
+                    <th>Año Ingreso</th>
+                    <th>Estado</th>
+                    <th>Fecha</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Ejemplo de datos -->
+                <tr>
+                    <td>121/TO1</td>
+                    <td>Lavado de Activos (Arts. 303 y 304 CPN)</td>
+                    <td>2014</td>
+                    <td>2024</td>
+                    <td>Trámite</td>
+                    <td>10/05/2024</td>
+                    <td>
+                        <div class="d-grid gap-2 d-md-block d-md-flex justify-content-md-center" >
+                            
+                            
+                            <button class="btn btn_editar" id="visualizar" th:attr="onclick='window.location.href=\'' + @{/form} + '\''"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
+                                <path
+                                d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7" />
+                            </svg></button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>20015312</td>
+                    <td>Lavado de Activos (Arts. 303 y 304 CPN)</td>
+                    <td>2016</td>
+                    <td>2017</td>
+                    <td>Etapa Juicio Oral</td>
+                    <td>10/10/2018</td>
+                    <td><div class="d-grid gap-2 d-md-block d-md-flex justify-content-md-center" >
+                            
+                        
+                        <button class="btn btn_editar" id="visualizar" th:attr="onclick='window.location.href=\'' + @{/form} + '\''"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
+                            <path
+                            d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7" />
+                        </svg></button>
+                    </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>CPP 4545652</td>
+                    <td>Lavado de Activos (Arts. 303 y 304 CPN)</td>
+                    <td>2013</td>
+                    <td>2023</td>
+                    <td>Sentencia</td>
+                    <td>10/05/2024</td>
+                    <td><div class="d-grid gap-2 d-md-block d-md-flex justify-content-md-center" >
+                            
+                        
+                        <button class="btn btn_editar" id="visualizar" th:attr="onclick='window.location.href=\'' + @{/form} + '\''"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                            <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
+                            <path
+                            d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7" />
+                        </svg></button>
+                    </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+     
+
+     
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+</body>
+
+</html>

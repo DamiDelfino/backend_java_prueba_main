@@ -1,0 +1,174 @@
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Baloo Tamma 2", !important;
+    font: 1rem/1.5 var(--bs-font-san-serif);
+    background-color: #f4f4f9;
+    
+}
+ #contenedor {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #fcfcfc;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    border: 1px solid #ddd; /* Borde gris claro */
+    border-radius: 10px; /* Bordes redondeados */
+}
+
+
+
+/* Estilos personalizados para el navbar */
+.navbar {
+    background-color: #343a40 !important;
+    display: flex;
+    justify-content: space-between;
+}
+.navbar-logo {
+    width: 10em; /* Tamaño reducido de la imagen */
+    height: auto; /* Mantiene la proporción */
+}
+
+/* Estilos de la tabla */
+table {
+    width: 100%;
+    margin-top: 20px;
+    box-shadow: #343a40;
+    border: 1px solid #ddd; /* Borde gris claro */
+    
+}
+
+
+/* Botones */
+.btn_editar, .agregar {
+    background-color: #c9f7f5 !important;
+    color: #146965 !important;
+    border: none;
+    transition: background-color 0.3s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra suave */
+    transition: box-shadow 0.3s ease; /* Transición para suavizar el cambio */
+}
+
+.btn_editar:hover, .agregar:hover {
+    background-color: #1bc5bd !important;
+    color: white !important;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3); /* Sombra más intensa en hover */
+}
+th{
+    text-align: center;
+    vertical-align: top;
+    padding: 20px;
+}
+#visualizar{
+    margin-left: 3px;
+}
+.btn-outline-danger{
+    width: 10em;
+}
+#dropdownMenuButton{
+    background: #343a40;
+    border: none;
+    color: #838583 
+}
+
+#dropdownMenuButton:hover{
+    color: #ddd;
+}    
+
+.dropdown-item{
+    text-align: center;
+}
+.text-left{
+    position: absolute;
+}
+
+h2{
+    margin-bottom: 3rem;
+}
+.modal-header{
+    background-color: #094a8a;
+}
+.modal-title{
+    color: #fff;
+}
+.btn-close{
+    background-color: #094a8a;
+}
+
+
+
+
+/* Ajustes responsivos */
+@media (max-width: 375px) {
+    h1 {
+        font-size: 1.5em;
+    }
+
+    table {
+        font-size: 0.9em;
+    }
+
+    th, td {
+        padding: 10px;
+    }
+
+    .btn_editar {
+        padding: 4px 8px;
+        font-size: 0.9em;
+    }
+
+    .usuario {
+        font-size: 0.9em;
+    }
+
+    img {
+        width: 8em;
+    }
+}
+
+@media (max-width: 320px) {
+    h1 {
+        font-size: 1.3em;
+    }
+
+    table {
+        font-size: 0.8em;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+
+    .btn_editar {
+        padding: 3px 6px;
+        font-size: 0.8em;
+    }
+
+    .usuario {
+        font-size: 0.8em;
+    }
+
+    img {
+        width: 6em;
+    }
+}
+@media (max-width: 600px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    .agregar {
+        width: 100%;
+        margin-top: 10px;
+    }
+    table, th, td {
+        font-size: 0.85em;
+    }
+}

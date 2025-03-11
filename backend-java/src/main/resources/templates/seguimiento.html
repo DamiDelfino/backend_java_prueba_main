@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RECOPILACIÓN INFORMACIÓN ESTADISTICA</title>
+    <link rel=icon href="/imagenes/logo.ico">
+    <script th:src="@{/js/admin.js}"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/styles_req.css}">
+</head>
+
+<body>
+  <!--Aca esta el Navbar extraido de NavbarAdmin-->
+  <div th:replace="~{navbarAdmin :: navbar}"></div>
+
+    <div class="container mt-4" id="contenedor">
+        <h1 class="text-center">SEGUIMIENTO</h1>
+     
+        <h3>
+            Filtro Busqueda:
+        </h3>
+        <hr>
+<!-- Panel de Filtros -->
+<div class="filtro">
+    
+    <div class="col-md-3 columna-izquierda">
+
+        <label for="fechaDesde">Fecha de Envio:</label>
+        <input type="date" id="fechaDesde" name="fechaDesde" class="form-control text-center filtro" >
+
+        <label for="fechaHasta">Fecha de Respuesta: </label>
+        <input type="date" id="fechaHasta" name="fechaHasta" class="form-control text-center filtro" >
+    </div>
+    <div class="col-md-3 columna-centro">
+        <label for="requerimiento">Estado Respuesta</label>
+        <select id="requerimiento" class="form-select form-select-sm text-center filtro">
+            <option value="">Todos</option>
+            <option value="paraprocesar">Sin Respuesta</option>
+            <option value="procesado">Con Repuesta</option>
+        </select>
+        
+        <label for="estadoCarga">Seguimiento Respuesta:</label>
+        <select id="estadoCausa" class="form-select form-select-sm text-center filtro">
+            <option value="">Todos</option>
+            <option value="paraprocesar">Pendiente Modificación por la Autoridad</option>
+            <option value="procesado">Procesado</option>
+            <option value="procesado">Procesado con Observaciones</option>
+            <option value="enrevision">No Cuenta con Información</option>
+            <option value="enrevision">En Revisión</option>
+        </select>
+    </div>
+    <div class="col-md-3 columna-derecha">
+        <label for="usuario">Autoridad:</label>
+        <input type="text" id="usuario" placeholder="Buscar por Autoridad" class="form-control text-center filtro">
+        <label for="expediente">Dependencia:</label>
+        <input type="text" id="expediente" placeholder="Buscar por expediente" class="form-control text-center filtro">
+
+        
+    </div>
+
+
+    <div class="col-md-3 btn-panel">
+     
+        <button onclick="filtrarCausas()" class="btn" id="buscar">Buscar</button>
+        <button onclick="borrarFiltros()" id="borrar" class="btn btn-secondary">Borrar Filtros</button>
+    </div>
+
+
+</div>
+
+<hr>
+
+
+        <!--Datos de la grilla de autoridades-->
+        <table class="table table-bordered mt-4">
+            <thead class="text-white" style="background-color: #094a8a !important;">
+                <tr>
+                    <th>Seleccionar</th>
+                    <th>Dependencia</th>
+                    <th>Autoridad</th>
+                    <th>Fecha Envío</th>
+                    <th>Fecha Respuesta</th>
+                    <th>Estado</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Ejemplo de datos -->
+                <tr>
+                    <td>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    </td>
+                    <td>Juzgado Federal</td>
+                    <td> Juzgado Criminal y Correccional Federal Nro. 1 de la Capital Federal</td>
+                    <td>15/08/2024</td>
+                    <td></td>
+                    <td>Pendiente Respuesta</td>
+
+
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                            
+                    </td>
+                    <td>Juzgado Federal</td>
+                    <td>Juzgado Criminal y Correccional Federal Nro. 2 de la Capital Federal</td>
+                    <td>15/08/2024</td>
+                    <td>29/09/2024</td>
+                    <td>Para Procesar</td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                        
+                    </td>
+                    <td>Juzgado Federal</td>
+                    <td>Juzgado Criminal y Correccional Federal Nro. 3 de la Capital Federal</td>
+                    <td>15/08/2024</td>
+                    <td>09/09/2024</td>
+                    <td>Procesado</td>
+
+                </tr>
+            </tbody>
+        </table>
+
+       <button class="btn agregar" data-bs-toggle="modal" data-bs-target="#exampleModal">Nuevo Requerimiento</button>
+    </div>
+
+      <!-- Pantalla Nuevo Requerimiento -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Nuevo Requerimiento</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                </div>
+                <div class="modal-body">
+                    <label for="formFileMd" class="form-label"><strong> Ingresar la Nota Firmada:</strong></label>
+                    <input class="form-control form-control-md" id="formFilemd" type="file">
+                 
+                    <hr class="separador">
+          
+                    <!-- Options Section -->
+                    <div class="options-section">
+                        <h6><strong>Seleccionar:</strong> </h6>
+                       
+                        <ul class="list-group list-group-flush">
+                          <!-- Opción "Todos" -->
+                          <li class="list-group-item"></li>
+                          <li class="list-group-item">
+                            <div class="form-check">
+                              <input class="form-check-input" type="checkbox" value="" id="checkAll" onclick="seleccionarTodos(this)"> 
+                              <label for="checkAll">Todos</label>
+                            </div>
+                          </li>
+                          <!-- Opciones Individuales -->
+                          <li class="list-group-item">
+                            <div class="form-check">
+                              <input class="form-check-input individual-checkbox" type="checkbox" value="" id="check1" onclick="actualizarCheckTodos()"> 
+                              <label for="check1">Juzgados Federales</label>
+                            </div>
+                          </li>
+                          <li class="list-group-item">
+                            <div class="form-check">
+                              <input class="form-check-input individual-checkbox" type="checkbox" value="" id="check2" onclick="actualizarCheckTodos()"> 
+                              <label for="check2">Tribunales Penales Económico</label>
+                            </div>
+                          </li>
+                          <li class="list-group-item">
+                            <div class="form-check">
+                              <input class="form-check-input individual-checkbox" type="checkbox" value="" id="check3" onclick="actualizarCheckTodos()"> 
+                              <label for="check3">Cámaras Federales</label>
+                            </div>
+                          </li>
+                          <li class="list-group-item">
+                            <div class="form-check">
+                              <input class="form-check-input individual-checkbox" type="checkbox" value="" id="check4" onclick="actualizarCheckTodos()"> 
+                              <label for="check4">Cámara Casación</label>
+                            </div>
+                          </li>
+                          <li class="list-group-item">
+                            <div class="form-check">
+                              <input class="form-check-input individual-checkbox" type="checkbox" value="" id="check5" onclick="actualizarCheckTodos()"> 
+                              <label for="check5">Juzgados Penales Económico</label>
+                            </div>
+                          </li>
+                          <li class="list-group-item">
+                            <div class="form-check">
+                              <input class="form-check-input individual-checkbox" type="checkbox" value="" id="check6" onclick="actualizarCheckTodos()"> 
+                              <label for="check6">Tribunales Federales</label>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                </div>
+        
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button class="btn btn-primary">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+
+    <script th:src="@{/js/requerimiento.js}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

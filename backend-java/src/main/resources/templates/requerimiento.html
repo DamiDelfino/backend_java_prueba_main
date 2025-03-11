@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RECOPILACIÓN INFORMACIÓN ESTADISTICA</title>
+    <link rel=icon href="/imagenes/logo.ico">
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/styles_req.css}">
+</head>
+
+<body>
+  <!--Navbar desde navbarAutoridad-->
+  <div th:replace="~{navbarAutoridad :: navbar}"></div>
+    <div class="container mt-4" id="contenedor">
+        <div class="container mt-5">
+            <div class="textarea-container">
+              <div>
+                <label for="formFileLg" class="form-label"><strong>Ingresar la Nota firmada</strong></label>
+                <input class="form-control form-control-lg" id="formFileLg" type="file">
+              </div>
+              
+
+                <hr class="separador">
+          
+                <!-- Options Section -->
+                <div class="options-section">
+                    <h6><strong>Seleccionar</strong> </h6>
+                    <ul class="list-group list-group-flush">
+                      <!-- Opción "Todos" -->
+                      <li class="list-group-item">
+                        <div class="form-check">
+                          <input class="form-check-input" type="checkbox" value="" id="checkAll" onclick="seleccionarTodos(this)"> 
+                          <label for="checkAll">Todos</label>
+                        </div>
+                      </li>
+                      <!-- Opciones Individuales -->
+                      <li class="list-group-item">
+                        <div class="form-check">
+                          <input class="form-check-input individual-checkbox" type="checkbox" value="" id="check1" onclick="actualizarCheckTodos()"> 
+                          <label for="check1">Juzgados Federales</label>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="form-check">
+                          <input class="form-check-input individual-checkbox" type="checkbox" value="" id="check2" onclick="actualizarCheckTodos()"> 
+                          <label for="check2">Tribunales Penales Económico</label>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="form-check">
+                          <input class="form-check-input individual-checkbox" type="checkbox" value="" id="check3" onclick="actualizarCheckTodos()"> 
+                          <label for="check3">Cámaras Federales</label>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="form-check">
+                          <input class="form-check-input individual-checkbox" type="checkbox" value="" id="check4" onclick="actualizarCheckTodos()"> 
+                          <label for="check4">Cámara Casación</label>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="form-check">
+                          <input class="form-check-input individual-checkbox" type="checkbox" value="" id="check5" onclick="actualizarCheckTodos()"> 
+                          <label for="check5">Juzgados Penales Económico</label>
+                        </div>
+                      </li>
+                      <li class="list-group-item">
+                        <div class="form-check">
+                          <input class="form-check-input individual-checkbox" type="checkbox" value="" id="check6" onclick="actualizarCheckTodos()"> 
+                          <label for="check6">Tribunales Federales</label>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-end gap-2">
+            <button class="btn btn-secondary cerrar" th:attr="onclick='window.location.href=\'' + @{/seguimiento} + '\''">Cerrar</button>
+            <button class="btn enviar" th:attr="onclick='window.location.href=\'' + @{/seguimiento} + '\''">Enviar</button>
+          
+        </div>
+       
+    </div>
+
+  
+
+
+    </div>
+
+
+
+
+
+
+    <script th:src="@{/js/requerimiento.js}"></script>
+    <script>
+        // Función para aplicar formato al texto
+        function formatText(command) {
+            document.execCommand(command, false, null);
+        }
+
+        // Función para alinear el texto
+        function alignText(alignment) {
+            document.execCommand("justify" + alignment, false, null);
+        }
+
+
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+     <!--Aca esta el Footer extraido de footer.html-->
+     <div th:replace="~{footer :: footer}"></div>
+</body>
+
+</html>

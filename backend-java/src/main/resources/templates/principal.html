@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RECOPILACIÓN INFORMACIÓN ESTADISTICA</title>
+    <link rel="icon" th:href="@{/imagenes/logo.ico}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/styles_principal.css}">
+
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark " style="background-color: #343a40 !important;">
+      <div class="container d-flex align-items-center">
+        <img th:src="@{/imagenes/DAJUDECO.png}" alt="Logo de DAJUDECO" class="navbar-logo mr-3">
+          <a class="navbar-brand" th:href="@{/principal}">Sistema Estadístico</a>
+
+          <!-- Menú Desplegable -->
+          <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Menú
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" th:href="@{/principal}">Requerimientos</a>
+                      <a class="dropdown-item" th:href="@{/notificaciones}">Notificaciones</a>
+                      <hr>
+                  <button type="button" class="btn btn-outline-danger"
+                  th:attr="onclick='window.location.href=\'' + @{/inicio} + '\''">Cerrar Sesión</button>
+              </div>
+
+          </div>
+      </div>
+  </nav>
+    <div class="container mt-4" id="contenedor">
+        <h1 class="text-center">RECOPILACIÓN INFORMACIÓN ESTADÍSTICA</h1>
+        <h2 class="text-center">GAFI - OCDE</h2>
+        
+        <p class="usuario text-right">usuario: <b>Autoridad XXXX</b></p>
+
+<hr id="linea">
+    <div class="section">
+        <div class="row">
+          <h3>Requerimiento 2025</h2>
+          <button class="btn butn" th:attr="onclick='window.location.href=\'' + @{/menu} + '\''">Ingresar</button>
+          
+        </div>
+        <div class="horizontal-rule"></div>
+        <div class="row">
+          <h3>Requerimientos anteriores</h2>
+          <div class="buttons">
+            <button class="btn butn" th:attr="onclick='window.location.href=\'' + @{/reqAutoridades} + '\''">Febrero 24</button>
+            <button class="btn butn">Inicial</button>
+          </div>
+        </div>
+      </div>
+
+
+    
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </div>
+     <!--Aca esta el Footer extraido de footer.html-->
+     <div th:replace="~{footer :: footer}"></div>
+</body>
+
+</html>

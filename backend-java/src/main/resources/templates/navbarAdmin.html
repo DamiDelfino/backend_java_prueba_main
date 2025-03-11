@@ -1,0 +1,21 @@
+<!-- Este archivo solo contiene el fragmento del navbar -->
+<nav class="navbar navbar-dark" style="background-color: #343a40 !important;" th:fragment="navbar">
+    <div class="container d-flex align-items-center">
+        <img src="/imagenes/DAJUDECO.png" alt="Logo de DAJUDECO" class="navbar-logo mr-3">
+        <a class="navbar-brand" th:href="@{/admin}">Sistema Estadístico</a>
+
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Menú
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" th:href="@{/admin}">Respuestas</a>
+                <a class="dropdown-item" th:href="@{/seguimiento}">Seguimiento</a>
+                <a class="dropdown-item" th:href="@{/estadistica}">Estadísticas</a>
+                <a class="dropdown-item" th:href="@{/reporte}">Reportes</a>
+                <hr>
+                <button type="button" class="btn btn-outline-danger"  th:onclick="|window.location.href='@{/inicio}'|">Cerrar Sesión</button>
+            </div>
+        </div>
+    </div>
+</nav>
