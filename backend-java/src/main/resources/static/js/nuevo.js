@@ -33,7 +33,7 @@ function enableLavado() {
     const grupoMedidasInputs = document.querySelectorAll("#lavado");
 
     // Habilita los inputs del segundo grupo si no está seleccionada la primera opción del select
-    if (selectValue === "Lavado") {
+    if (selectValue === "Lavado de Activos (Arts. 303 y 304 CPN)") {
         grupoMedidasInputs.forEach(input => {
             input.disabled = false;
         });

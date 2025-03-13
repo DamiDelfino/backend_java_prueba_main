@@ -1,5 +1,6 @@
 package com.ejemplo.backend.models;
 
+import jakarta.annotation.Nonnull;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -15,6 +16,7 @@ public class Causa {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(nullable = false)
+    @Nonnull
     private String expediente;
     private String lex;
     private String delito;
@@ -24,6 +26,7 @@ public class Causa {
 
     // Tabla Estado Procesal
     private String estado;
+
     private String fecha;
 
     // Tabla Sentencia
@@ -87,6 +90,11 @@ public class Causa {
     private String estadoCooperacion;
     private String pais;
 
-    //Tabla archivos adjuntos
+    // Tabla archivos adjuntos
     private String observaciones;
+    //Fecha para el admin
+    @Column(nullable = false)
+    private String fechaAdmin; // Campo para almacenar la fecha actual de la operación
+
+    private String requerimiento;
 }

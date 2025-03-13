@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es" xmlns:th="https://www.thymeleaf.org" >
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -14,7 +14,7 @@
 <body>
     <!--Aca esta el Navbar extraido de NavbarAdmin-->
     <div th:replace="~{navbarAdmin :: navbar}"></div>
-    
+
     <div class="container mt-4" id="contenedor">
         <h1 class="text-center">ADMINISTRADOR DE RESPUESTAS</h1>
         <h3>
@@ -27,10 +27,10 @@
             <div class="col-md-3 columna-izquierda">
 
                 <label for="fechaDesde">Fecha de Carga Desde:</label>
-                <input type="date" id="fechaDesde" name="fechaDesde" class="form-control text-center filtro" >
+                <input type="date" id="fechaDesde" name="fechaDesde" class="form-control text-center filtro">
 
                 <label for="fechaHasta">Fecha de Carga Hasta: </label>
-                <input type="date" id="fechaHasta" name="fechaHasta" class="form-control text-center filtro" >
+                <input type="date" id="fechaHasta" name="fechaHasta" class="form-control text-center filtro">
             </div>
             <div class="col-md-3 columna-centro">
                 <label for="requerimiento">Requerimiento</label>
@@ -39,7 +39,7 @@
                     <option value="gafi">GAFI</option>
                     <option value="ocde">OCDE</option>
                 </select>
-                
+
                 <label for="estadoCarga">Estado de Causa:</label>
                 <select id="estadoCausa" class="form-select form-select-sm text-center filtro">
                     <option value="">Todos</option>
@@ -50,23 +50,25 @@
             </div>
             <div class="col-md-3 columna-derecha">
                 <label for="usuario">Autoridad:</label>
-                <input type="text" id="usuario" placeholder="Buscar por Autoridad" class="form-control text-center filtro">
+                <input type="text" id="usuario" placeholder="Buscar por Autoridad"
+                    class="form-control text-center filtro">
                 <label for="expediente">Expediente:</label>
-                <input type="text" id="expediente" placeholder="Buscar por expediente" class="form-control text-center filtro">
+                <input type="text" id="expediente" placeholder="Buscar por expediente"
+                    class="form-control text-center filtro">
 
-                
+
             </div>
 
 
             <div class="col-md-3 btn-panel">
-             
+
                 <button onclick="filtrarCausas()" class="btn" id="buscar">Buscar</button>
                 <button onclick="borrarFiltros()" id="borrar" class="btn btn-secondary">Borrar Filtros</button>
             </div>
 
 
         </div>
- <hr>
+        <hr>
         <!-- Tabla de Datos -->
         <table class="table table-bordered mt-4">
             <thead class="text-white" style="background-color: #094a8a !important;">
@@ -87,7 +89,7 @@
                     <td><span class="estado procesado">Procesado</span></td>
                     <td>Juzgado 1</td>
                     <td>GAFI</td>
-                    <td><button  class="btn" onclick="visualizar()" id="visualizar">Visualizar</button></td>
+                    <td><button class="btn" onclick="visualizar()" id="visualizar">Visualizar</button></td>
                 </tr>
                 <tr>
                     <td>2024-11-28</td>
@@ -95,7 +97,7 @@
                     <td><span class="estado enrevision">En Revisión</span></td>
                     <td>Juzgado 2</td>
                     <td>GAFI</td>
-                    <td><button class="btn"  id="visualizar">Visualizar</button></td>
+                    <td><button class="btn" id="visualizar">Visualizar</button></td>
                 </tr>
                 <tr>
                     <td>2024-09-12</td>
@@ -103,7 +105,15 @@
                     <td><span class="estado paraprocesar">En Proceso</span></td>
                     <td>Juzgado 3</td>
                     <td>OCDE</td>
-                    <td><button class="btn"  id="visualizar">Visualizar</button></td>
+                    <td><button class="btn" id="visualizar">Visualizar</button></td>
+                </tr>
+                <tr th:each="causa : ${causas}">
+                    <td th:text="${causa.fechaAdmin}"></td>  <!-- Fecha (fechaAdmin) -->
+                    <td th:text="${causa.expediente}"></td>  <!-- Expediente -->
+                    <td th:text="'En Revisión'"></td>  <!-- Estado (Siempre En Revisión) -->
+                    <td th:text="'Juzgado 4'"></td>  <!-- Autoridad (Siempre Juzgado 4) -->
+                    <td th:text="${causa.requerimiento}"></td>  <!-- Requerimiento (GAFI o OCDE) -->
+                    <td><button class="btn" id="visualizar">Visualizar</button></td>
                 </tr>
             </tbody>
         </table>
@@ -111,18 +121,18 @@
         <!--Paginación-->
         <nav class="paginado" aria-label="Page navigation example">
             <ul class="pagination justify-content-center">
-              <li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
+                <li class="page-item disabled"><a class="page-link" href="#">Anterior</a></li>
+                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
             </ul>
-          </nav>
+        </nav>
     </div>
 
-   
-  
-    <!--bootstrap --> 
+
+
+    <!--bootstrap -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

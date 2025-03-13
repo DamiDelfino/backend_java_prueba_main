@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -60,7 +61,9 @@ public class HomeController {
     }
     
     @GetMapping("/admin")
-    public String mostrarAdmin(){
+    public String mostrarAdmin(Model model){
+        List<Causa> causas = causaService.obtenerTodas();
+        model.addAttribute("causas", causas);  // Agregar la lista de causas al modelo
         return "admin";
     }    
         
@@ -120,12 +123,30 @@ public class HomeController {
     
             // Convertir a formato dd/MM/yyyy para guardarlo en la base de datos
             String fechaFormateada = formatoSalida.format(fecha);
-            causa.setFecha(fechaFormateada); // Guardar la fecha en el objeto causa
+            causa.setFecha(fechaFormateada); // Guardar la fecha original en el objeto causa
+    
+            // Obtener fecha de hoy para la columna 'fechaAdmin'
+            LocalDate fechaHoy = LocalDate.now();
+            causa.setFechaAdmin(fechaHoy.toString()); // Guardar la fecha de hoy en fechaAdmin
+    
+            // Verificar el delito y asignar el requerimiento adecuado
+            String requerimiento = "OCDE"; // Valor predeterminado
+            if ("Lavado de Activos (Arts. 303 y 304 CPN)".equals(causa.getDelito())) {
+                requerimiento = "GAFI";
+            }
+            causa.setRequerimiento(requerimiento);
     
             // Guardar causa en la base de datos
             causaService.guardarCausa(causa);
+            
+            // Pasar la información a la vista de Admin
+            model.addAttribute("expediente", causa.getExpediente());
+            model.addAttribute("fechaAdmin", fechaHoy);
+            model.addAttribute("estado", "En Revisión");
+            model.addAttribute("autoridad", "Juzgado 4");
+            model.addAttribute("requerimiento", requerimiento);
     
-            return "redirect:/menu";
+            return "redirect:/menu";  // Redirigir para mostrar la lista actualizada
         } catch (ParseException e) {
             // Manejar el error si la fecha no está en el formato correcto
             model.addAttribute("error", "Formato de fecha inválido.");
