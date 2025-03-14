@@ -63,7 +63,12 @@ public class HomeController {
     @GetMapping("/admin")
     public String mostrarAdmin(Model model){
         List<Causa> causas = causaService.obtenerTodas();
-        model.addAttribute("causas", causas);  // Agregar la lista de causas al modelo
+        System.out.println("Causas obtenidas: " + causas);
+        for (Causa causa : causas) {
+            System.out.println("Expediente: " + causa.getExpediente() + ", Delito: " + causa.getDelito() + ",expediente: " + causa.getExpediente() + ", Fecha Admin: " + causa.getFechaAdmin()
+            + "Requerimiento: " + causa.getRequerimiento());
+        model.addAttribute("causas", causas);
+        }
         return "admin";
     }    
         
