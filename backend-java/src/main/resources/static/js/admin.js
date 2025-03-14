@@ -45,9 +45,15 @@ function borrarFiltros() {
         }
     });
 
-    cargarGrillaCompleta(); // Vuelve a mostrar todos los datos
+    // Mostrar todas las filas de la tabla
+    const filas = document.querySelectorAll("#tablaCausas tr");
+    filas.forEach(fila => {
+        fila.style.display = "";
+    });
+  //  cargarGrillaCompleta(); // Vuelve a mostrar todos los datos
 }
 // Función para cargar todos los datos en la tabla
+/*
 function cargarGrillaCompleta() {
     const tabla = document.getElementById('tablaCausas');
     tabla.innerHTML = '';
@@ -74,12 +80,12 @@ function cargarGrillaCompleta() {
 `;
         tabla.appendChild(fila);
     });
-}
+}*/
 function visualizar(){
-    window.location.href="formV.html";
+    window.location.href="form.html";
 }
 
 
 
 // Cargar todos los datos al cargar la página
-window.onload = cargarGrillaCompleta;
+//window.onload = cargarGrillaCompleta;
