@@ -18,6 +18,8 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 @RequestMapping("/")
@@ -86,6 +88,14 @@ public class HomeController {
         model.addAttribute("causa", new Causa());
         return "nuevo";
     }
+
+
+    @GetMapping("/formV")
+    public String mostrarNuevoAdmin(Model model) {
+        model.addAttribute("causa", new Causa());
+        return "formV";
+    }
+    
 
     @ExceptionHandler(Exception.class)
     public String handleError(Exception e) {
@@ -166,4 +176,11 @@ public class HomeController {
         model.addAttribute("causa", causa);
         return "nuevo"; // Se reutiliza la vista
     }
+    @GetMapping("/editarAdmin/{id}")
+    public String editarCausaAdmin(@PathVariable Long id, Model model) {
+        Causa causa = causaService.obtenerPorId(id).orElse(null);
+        model.addAttribute("causa", causa);
+        return "formV"; // Se reutiliza la vista
+    }
+
 }

@@ -114,10 +114,10 @@
                 <tr th:each="causa : ${causas}">
                     <td th:text="${causa.fechaAdmin}"></td>  <!-- Fecha (fechaAdmin) -->
                     <td th:text="${causa.expediente}"></td>  <!-- Expediente -->
-                    <td th:text="'En Revisión'"> <span class="estado paraprocesar"></span></td>  <!-- Estado (Siempre En Revisión) -->
+                    <td th:text="'En Revisión'" class="estado enrevision"></td>  <!-- Estado (Siempre En Revisión) -->
                     <td th:text="'Juzgado 4'"></td>  <!-- Autoridad (Siempre Juzgado 4) -->
                     <td th:text="${causa.requerimiento}"></td>  <!-- Requerimiento (GAFI o OCDE) -->
-                    <td><button class="btn" id="visualizar" th:href="@{/editar/{id}(id=${causa.id})}">Visualizar</button></td>
+                    <td><a  class="btn" id="visualizar" th:href="@{/editarAdmin/{id}(id=${causa.id})}">Visualizar</a></td>
                 </tr>
             </tbody>
         </table>

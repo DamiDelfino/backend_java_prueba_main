@@ -1,0 +1,601 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="htpps://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RECOPILACIÓN INFORMACIÓN ESTADÍSTICA</title>
+    <link rel="icon" href="/imagenes/logo.ico">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" th:href="@{/css/styles_form.css}">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div th:replace="~{navbarAdmin :: navbar}"></div>
+
+    <!--cuadro principal-->
+    <div class="container mt-4" id="contenedor">
+        <form th:object="${causa}" method="post" th:action="@{/guardarCausa}"> 
+
+        <div class="text-center mb-4">
+           
+           <h1 class="text-center">RECOPILACIÓN INFORMACIÓN ESTADÍSTICA</h1>
+           <h2 class="text-center">GAFI - OCDE</h2>
+           <p class="usuario text-right">usuario: <b>Autoridad XXXX</b></p>
+        </div>
+        <!-- Tabla de Datos de la Causa -->
+        <div class="table-responsive">
+            <table class="table table-bordered mt-4">
+                <caption class="datos_causa">DATOS DE LA CAUSA</caption>
+                <thead class="table-primary">
+                    <tr>
+                        <th>ID Lex <i class="bi bi-exclamation-circle" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Ingresar el número de Lex100 que figura en su sistema">
+                        </i></th>
+                        <th>Número de Expediente</th>
+                        <th>Año Inicio</th>
+                        <th>Año Ingreso</th>
+                        <th>Delito</th>
+                        <th>Delito precedente <br><small>(Solo para delitos pertenencientes a GAFI)</small></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <!--Numero ID Lex-->
+                        <td class="text-center"><input required type="text" th:field="*{lex}" class="form-control text-center">
+                            <div class="invalid-feedback">Este campo es obligatorio</div>
+                        </td>
+                        <!--Numero Expediente-->
+                        <td class="text-center"><input required class="form-control text-center" type="text" th:field="*{expediente}">
+                            <div class="invalid-feedback">Este campo es obligatorio</div>
+                        </td>
+                        <!--Año Inicio-->
+                        <td class="text-center"><input required class="form-control text-center" type="number" th:field="*{anioInicio}">
+                            <div class="invalid-feedback">Este campo es obligatorio</div>
+                        </td>
+                        <td class="text-center">
+                            <!--Año Ingreso-->
+                            <select class="form-select form-select-sm text-center" th:field="*{anioIngreso}" required>
+                                <option value="0">Seleccione una opción</option>
+                                <option value="2017">2017</option>
+                                <option value="2018">2018</option>
+                                <option value="2019">2019</option>
+                                <option value="2020">2020</option>
+                                <option value="2021">2021</option>
+                                <option value="2022">2022</option>
+                                <option value="2023">2023</option>
+                                <option value="2024">2024</option>
+                                <option value="2025">2025</option>
+                            </select>
+                            <div class="invalid-feedback">Este campo es obligatorio</div>
+                        </td>
+
+                        <td class="text-center">
+                            <!--Delito-->
+                            <select class="form-select form-select-sm text-center" aria-label="Small select example"
+                                required id="enableSelect"  th:field="*{delito}" onchange="enableLavado()">
+                                <option value="">- Seleccione uno -</option>
+                                <optgroup label="OCDE">
+                                    <option value="Cohecho">Cohecho</option>
+                                    <option value="Concusión">Concusión</option>
+                                    <option value="Enriquecimiento Ilícito de func. y emp.">Enriquecimiento Ilícito de func. y emp.</option>
+                                    <option value="Soborno Trasnacional">Soborno Trasnacional</option>
+                                    <option value="Tráfico de influencias nacional">Tráfico de influencias nacional</option>
+                                </optgroup>
+                                <optgroup label="GAFI">
+                                    <option value="Lavado de Activos (Arts. 303 y 304 CPN)">Lavado de Activos (Arts. 303 y 304 CPN)</option>
+                                </optgroup>
+                            </select>
+                            <div class="invalid-feedback">Este campo es obligatorio</div>
+                        </td>
+                        <td class="text-center">
+                            <!--Delito Precedente-->
+                            <select class="form-select form-select-sm text-center" aria-label="Small select example"
+                                id="lavado" th:field="*{delitoPrecdedente}" disabled>
+                                <option value="">- Seleccione Uno -</option>
+                                <option value="">Contrabando agravado </option>
+                                <option value="">Usura </option>
+                                <option value="">Evasión tributaria </option>
+                                <option value="">Estafas y otras defraudaciones </option>
+                                <option value="">Cohecho financiero pasivo</option>
+                                <option value="">Delitos cambiarios/ Régimen Penal Cambiario</option>
+                                <option value="">Contrabando simple </option>
+                                <option value="">Cohecho y tráfico de influencias </option>
+                                <option value="">Narcotráfico </option>
+                                <option value="">Falsedades y omisiones de documentación contable </option>
+                                <option value="">Encubrimiento </option>
+                                <option value="">Intermediación financiera no autorizada </option>
+                                <option value="">Asociación ilícita </option>
+                                <option value="">Encubrimiento de contrabando</option>
+                                <option value="">Otras transgresiones </option>
+                                <option value="">Robo cometido por 3 o más personas</option>
+                                <option value="">Contrabando de estupefacientes o precursores químicos </option>
+                                <option value="">Negociación incompatible con el ejercicio de funciones públicas
+                                </option>
+                                <option value="">Tráfico ilícito de drogas farmacéuticas a través de internet con
+                                    EEUU
+                                </option>
+                                <option value="">Trata de Personas con fines de explotación sexual o laboral
+                                </option>
+                                <option value="">Enriquecimiento ilícito de funcionarios y empleados </option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="row">
+            <!--Tabla Estado Procesal-->
+            <div class="col-md-6 mb-3">
+                <table class="table table-bordered">
+                    <caption class="estado_procesal">ESTADO PROCESAL</caption>
+                    <thead class="table-danger">
+                        <tr>
+                            <th>Último Estado Procesal</th>
+                            <th>Fecha Último Estado Procesal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <!--Estado Procesal-->
+                            <td> <select class="form-select form-select-sm text-center" th:field="*{estado}" required>
+                                    <option value="">- Seleccione uno -</option>
+                                    <option value="Oposición de elevación a juicio">Oposición de elevación a juicio</option>
+                                    <option value="Incidente de falta de acción">Incidente de falta de acción</option>
+                                    <option value="Contienda">Contienda </option>
+                                    <option value="Elevación a Juicio">Elevación a Juicio</option>
+                                    <option value="Etapa de Juicio Oral">Etapa de Juicio Oral</option>
+                                    <option value="Incompetencia">Incompetencia</option>
+                                    <option value="Con Requerimiento de Instrucción">Con Requerimiento de Instrucción</option>
+                                    <option value="Delegada en MPF">Delegada en MPF</option>
+                                    <option value="Con Indagatoria"> Con Indagatoria</option>
+                                    <option value="Con falta de Merito">Con falta de Merito</option>
+                                    <option value="Instrucción suplementaria">Instrucción suplementaria</option>
+                                    <option value="Exhorto en trámite ">Exhorto en trámite </option>
+                                    <option value="Suspensión del juicio a prueba">Suspensión del juicio a prueba</option>
+                                    <option value="Procesamiento">Procesamiento</option>
+                                    <option value="Sentencia">Sentencia</option>
+                                    <option value="Sobreseimiento">Sobreseimiento</option>
+                                    <option value="Trámite">Trámite</option>
+                                </select>
+                                <div class="invalid-feedback">Este campo es obligatorio</div>
+                            </td>
+                            <td>
+                                <!--Fecha Estado Procesal-->
+                                <input required class="form-control text-center" type="date" th:field="*{fecha}" >
+                                <div class="invalid-feedback">Este campo es obligatorio</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!--Tabla de Sentencia-->
+            <div class="col-md-6 mb-3">
+                <table class="table table-bordered">
+                    <caption class="sentencia">SENTENCIA</caption>
+                    <thead class="table-info">
+                        <tr>
+                            <th>Sentencia <br><i><small>Indicar Si/No</small></i></th>
+                            <th>Tipo de Sentencia</th>
+                            <th>Sentencia Firme</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <select class="form-select form-select-sm text-center" id="selectOption"
+                                    onchange="enableSentencia()" required th:field="*{sentencia}">
+                                    <option value="">-Seleccione Uno-</option>
+                                    <option value="NO">NO</option>
+                                    <option value="SI">SI</option>
+                                </select>
+                                <div class="invalid-feedback">Este campo es obligatorio</div>
+                            </td>
+                            <td>
+                                <!--Tipo Sentencia-->
+                                <select class="form-select form-select-sm text-center" id="textInput" disabled th:field="*{tipoSentencia}">
+                                    <option value=""> - Seleccione Uno -</option>
+                                    <option value="mixta">Mixta</option>
+                                    <option value="Condenatoria">Condenatoria</option>
+                                    <option value="abso">Absolutoria</option>
+                                </select>
+                            </td>
+                            <td>
+                                <!--Sentencia Firme-->
+                                <select class="form-select form-select-sm text-center" id="textInput" disabled th:field="*{sentenciaFirme}">
+                                    <option value="">- Seleccione Uno -</option>
+                                    <option value="si"> SI</option>
+                                    <option value="no">NO</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <!--Tabla de Participación de Otros Actores-->
+        <div class="table-responsive mb-3">
+            <table class="table table-bordered">
+                <caption class="part_otros_act">PARTICIPACIÓN DE OTROS ACTORES</caption>
+                <thead class="table-success">
+                    <tr>
+                        <th>Organismos Públicos <br> <small> (UIF, AFIP, otros)</small></th>
+                        <th>Calidad</th>
+                        <th>Fiscalías Especializadas</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center"><input class="form-control text-center" type="text" id="firstInput"
+                                oninput="enableInputs()" th:field="*{organismoPublicos}"></td>
+                        <td class="text-center"><input class="form-control text-center" type="text"
+                                id="additionalInput" disabled th:field="*{calidad}"></td>
+                        <td class="text-center"><input class="form-control text-center" type="text"
+                                id="additionalInput" disabled  th:field="*{fiscaliasEspecializadas}"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--Tabla de Personas Fisicas -->
+        <div class="table-responsive mb-3">
+            <table class="table table-bordered">
+                <caption class="pers_fisc">PERSONAS FÍSICAS</caption>
+                <thead class="table-warning">
+                    <tr>
+                        <th>Imputados</th>
+                        <th>Procesados</th>
+                        <th>Personas con suspensión de juicio a prueba</th>
+                        <th>Sobreseídos</th>
+                        <th>Condenados</th>
+                        <th>Absueltos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center"><input class="form-control text-center" th:field="*{imputados}" type="number"
+                                oninput="enableSecondTable()" id="pf"></td>
+                        <td class="text-center"><input class="form-control text-center" th:field="*{procesados}" type="number"
+                                oninput="enableSecondTable()" id="pf"></td>
+                        <td class="text-center"><input class="form-control text-center" th:field="*{suspension}" type="number"
+                                oninput="enableSecondTable()" id="pf"></td>
+                        <td class="text-center"><input class="form-control text-center" th:field="*{sobreseidos}" type="number"
+                                oninput="enableSecondTable()" id="pf"></td>
+                        <td class="text-center"><input class="form-control text-center" th:field="*{condenados}" type="number"
+                                oninput="enableSecondTable()" id="pf"></td>
+                        <td class="text-center"><input class="form-control text-center" th:field="*{absueltos}" type="number"
+                                oninput="enableSecondTable()" id="pf"></td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--Tabla de Funcionarios Publicos-->
+        <div class="table-responsive mb-3">
+            <table class="table table-bordered">
+                <caption class="fun_pub_inv">FUNCIONARIOS PÚBLICOS INVOLUCRADES</caption>
+                <thead class="table-warning">
+                    <tr>
+                        <th>Calidad
+                        <br><i>Imputado, Procesado, Condenado, etc.</i>
+                    </th>
+                        <th>Cantidad</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center "><input class="form-control text-center" type="text"  th:field="*{calidadFunPublico}" id="desbloquear"
+                                disabled></td>
+                        <td class="text-center"><input class="form-control text-center" type="text" th:field="*{cantidadFunPublico}"  id="desbloquear"
+                                disabled></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--Tabla de Personas Juridicas-->
+        <div class="table-responsive mb-3">
+            <table class="table table-bordered">
+                <caption class="per_jur"> PERSONAS JURÍDICAS</caption>
+                <thead class="table-success">
+                    <th>Se utiliza como vehículo vinculado una Persona Jurídica
+                        <br><i>Indicar Si/No</i>
+                    </th>
+                    <th>Tipo de persona jurídica utilizada como vehiculo <br> <i>(SA, SRL, Etc.)</i></th>
+                </thead>
+                <tbody>
+                    <td class="text-center align-middle">
+                        <select class="form-select d-inline w-auto" id="selectOpt" th:field="*{vehiculoPersJuridica}" onchange="enableVehiculoJuridica()" required>
+                            <option value="">- Seleccione Uno -</option>
+                            <option value="SI"> SI</option>
+                            <option value="NO">NO</option>
+                        </select>
+                        <div class="invalid-feedback">Este campo es obligatorio</div>
+                    </td>
+                    <td class="text-center">
+                        <select class="form-select d-inline w-auto" id="juridica" th:field="*{tipoPersJuridica}" disabled>
+                            <option value="">-Seleccione Uno-</option>
+                            <option value="">S.A.</option>
+                            <option value="">S.R.L.</option>
+                            <option value="">S.A.S</option>
+                            <option value="">S.C.A.</option>
+                            <option value="">O.N.G.</option>
+                            <option value="">Otros</option>
+                        </select></td>
+                </tbody>
+            </table>
+        </div>
+        <!--Tabla de Personas Juridicas-->
+        <div class="table-responsive mb-3">
+            <table class="table table-bordered">
+                <caption class="per_jur">PERSONAS JURÍDICAS</caption>
+                <thead class="table-success">
+                    <tr>
+                        <th>Tipo de Persona Jurídica <br> sujeta a proceso <br>  <i>(SA, SRL, etc)</i></th>
+                        <th>Imputados</th-imputadas>
+                        <th>Procesados</th>
+                        <th>Absueltos</th>
+                        <th>Sancionados</th>
+                        <th>Tipo de Sanción</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <!--Tipo de Persona Jurídica-->
+                        <td class="text-center">
+                            <select class="form-select d-inline w-auto" id="juridico" th:field="*{tipoPersonaJuridica}" onchange="enableJuridico()">
+                            <option value="default">-Seleccione Uno-</option>
+                            <option value="">S.A.</option>
+                            <option value="">S.R.L.</option>
+                            <option value="">S.A.S</option>
+                            <option value="">S.C.A.</option>
+                            <option value="">O.N.G.</option>
+                            <option value="">Otros</option>
+                        </select></td>
+                        <!--Imputados-->
+                        <td class="text-center">
+                            <input class="form-control text-center grupoJuridico" th:field="*{imputadoPJ}" type="number" disabled></td>
+                        <!-- Procesados -->
+                        <td class="text-center">
+                            <input class="form-control text-center grupoJuridico" th:field="*{procesadoPJ}" type="number" disabled></td>
+                        <!-- Absueltos -->
+                        <td class="text-center">
+                            <input class="form-control text-center grupoJuridico" th:field="*{absueltoPJ}" type="number" disabled></td>
+                        <!-- Sancionados -->
+                        <td class="text-center">
+                            <input class="form-control text-center grupoJuridico" th:field="*{sancionadoPJ}" type="number" disabled></td>
+                        <!-- Tipo de Sanción -->
+                        <td> 
+                            <select class="form-select form-select-sm text-center grupoJuridico" th:field="*{tipoSancion}" disabled>
+                                <option value="">- Seleccione Uno -</option>
+                                <option value="">Pérdida o suspensión de los beneficios estatales que tiene la
+                                    persona
+                                    jurídica.</option>
+                                <option value="">Suspensión para participar en concursos o licitaciones estatales.
+                                </option>
+                                <option value=""> Suspensión parcial de actividades.</option>
+                                <option value="">Suspensión total de actividades. </option>
+                                <option value="">Multa. </option>
+                                <option value=""> Disolución y liquidación de la personería.</option>
+                                <option value="">Publicación de una síntesis de la sentencia que la condena a costa
+                                    de
+                                    la persona jurídica</option>
+                                <option value="">Cancelación de la Personería</option>
+                            </select></td>
+
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!--Tabla de Recupero de Activos-->
+        <div class="table-responsive mb-3">
+            <table class="table table-bordered">
+                <caption class="recupero">INFORMACIÓN SOBRE RECUPERO DE ACTIVOS</caption>
+                <thead>
+                    <tr class="table-secondary">
+                        <th>Tipo de medida</th>
+                        <th>Fecha de la medida</th>
+                        <th>Inmuebles </th>
+                        <th>Inmuebles</th>
+                        <th>Vehículos Tipo</th>
+                        <th>Vehículos </th>
+                        <th>Vehículos </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <!-- Tipo de medida -->
+                        <td><select class="form-select form-select-sm text-center" id="medidas" onchange="enableMedidas()" th:field="*{tipoMedida}" >
+                                <option value="default">- Seleccione Uno -</option>
+                                <option value=""> Decomiso con Condena</option>
+                                <option value="">Decomiso Sin Condena por Otro motivo de suspención o Extinción de la acción penal</option>
+                                <option value="">Decomiso Sin Condena por Prescripción</option>
+                                <option value="">Decomiso Sin Condena por Fallecimiento</option>
+                                <option value="">Inhibición general de bienes</option>
+                                <option value="">Intervención judicial</option>
+                                <option value="">Prohibición de contratar</option>
+                                <option value="">Prohibición de innovar</option>
+                                <option value="">Secuestro</option>
+                                <option value="">Otro</option>
+                            </select> </td>
+                        <!-- Fecha de la medida -->
+                        <td><input class="form-control text-center grupoMedidas" type="date" th:field="*{fechaMedida}" > </td>
+                        <!-- Inmuebles cantidad-->
+                        <td class="text-center"><input class="form-control text-center grupoMedidas" th:field="*{inmuebles}"  type="number" placeholder="Cantidad"></td>
+                        <!-- Inmuebles valor -->
+                        <td class="text-center"><input class="form-control text-center grupoMedidas" th:field="*{inmueblesValor}"  type="number" placeholder="Valorización total estimada"></td>
+                         <!-- Vehículos Tipo -->
+                         <td> <select class="form-select form-select-sm text-center grupoMedidas" th:field="*{tipoVehiculo}" >
+                            <option value="">- Seleccione Uno -</option>
+                            <option value="">Auto</option>
+                            <option value="">Camión</option>
+                            <option value="">Camioneta</option>
+                            <option value="">Moto</option>
+                            <option value="">Aeronave</option>
+                            <option value="">Helicoptero</option>
+                            <option value="">Maquina Agrícola</option>
+                            <option value="">Colectivo</option>
+                            <option value="">Otros</option>
+                        </select></td>
+                        <!-- Vehículos cantidad-->
+                        <td class="text-center"><input class="form-control text-center grupoMedidas" type="number" placeholder="Cantidad" th:field="*{vehiculo}" ></td>
+                       
+                        <!-- Vehículos  valor -->
+                        <td class="text-center"><input class="form-control text-center grupoMedidas" type="number"  th:field="*{vehiculoValor}" placeholder="Valorización total estimada"></td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- segunda parte-->
+        <div class="table-responsive mb-3">
+            <table class="table table-bordered">
+                <caption class="recupero">INFORMACIÓN SOBRE RECUPERO DE ACTIVOS</caption>
+                <thead>
+                    <tr class="table-secondary">
+                        <th>Equipos electrónicos <br><small><i>(ceulares, computadoras, etc)</i></small>
+                        </th>
+                        <th>Equipos electrónicos </th>
+                        <th>Productos Financieros <br><small><i>(Acciones; bonos; obligaciones negociables; <br> fondos de inversión; CEDEARS; otros)</i></small></th>
+                        <th>Productos Financieros </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Ejemplo de datos -->
+                        <tr>
+                            <td class="text-center"><input th:field="*{equipoElectronico}" class="form-control text-center grupoMedidas" type="number" placeholder="Cantidad"></td>
+                            <td class="text-center"><input th:field="*{equipoElectronicoValor}" class="form-control text-center grupoMedidas" type="number" placeholder="Valorización total estimada"></td>
+                            <td class="text-center"><input th:field="*{productoFinanciero}" class="form-control text-center grupoMedidas" type="number" placeholder="Cantidad"></td>
+                            <td class="text-center"><input th:field="*{productoFinancieroValor}" class="form-control text-center grupoMedidas" type="number" placeholder="Valorización total estimada"></td>
+
+                            
+                        </tr>
+                    </tbody>
+            </table>
+        </div>
+    <!--Tercer parte-->
+    <div class="table-responsive mb-3">
+        <table class="table table-bordered">
+            <caption class="recupero">INFORMACIÓN SOBRE RECUPERO DE ACTIVOS</caption>
+            <thead>
+                <tr class="table-secondary">
+                    <th>Pesos </th>
+                    <th>Dólares </th>
+                    <th>Euros </th>
+                    <th>Otras monedas </th>
+                    <th>Otros </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="text-center">
+                        <div class="input-group">
+                            <span class="input-group-text">$</span>
+                            <input class="form-control text-center grupoMedidas" th:field="*{pesos}" type="number" placeholder="Monto">
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <div class="input-group">
+                            <span class="input-group-text">USD</span>
+                            <input class="form-control text-center grupoMedidas" th:field="*{dolares}" type="number" placeholder="Monto" >
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <div class="input-group">
+                            <span class="input-group-text">€</span>
+                            <input class="form-control text-center grupoMedidas" th:field="*{euros}" type="number" placeholder="Monto">
+                        </div>
+                    </td>
+                    <td class="text-center">
+                        <input class="form-control text-center grupoMedidas" th:field="*{otrasMonedas}" type="text" placeholder="Tipo y Monto">
+                    </td>
+                    <td class="text-center">
+                        <input class="form-control text-center grupoMedidas" th:field="*{otros}" type="text" placeholder="Cantidad y valorización total estimada">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+        <!--Tabla de Cooperación-->
+        <div class="table-responsive mb-3">
+            <table class="table table-bordered">
+                <caption class="exhortos">COOPERACIÓN INTERNACIONAL</caption>
+                <thead>
+                    <tr class="table-success">
+                        <th>Tipo de Cooperación Internacional</th>
+                        <th>Estado</th>
+                        <th>País</th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Ejemplo de datos -->
+                    <tr>
+                        <td class="text-center"><select class="form-select form-select-md text-center d-inline w-auto" th:field="*{tipoCooperacion}" id="cooperacion" onchange="enableCooperacion()">
+                            <option value="default">- Seleccione Uno -</option>
+                            <option value="">Exhorto librado</option>
+                            <option value="">Exhorto tramitado</option>
+                            <option value="">Extradición solicitada</option>
+                            <option value="">Extradición tramitado</option>
+                        </select></td>
+                        <td>
+                            <select class="form-select form-select-md text-center d-inline w-auto grupoCooperacion" th:field="*{estadoCooperacion}" disabled>
+                                <option value="">- Seleccione Uno -</option>
+                                <option value="">contestado</option>
+                                <option value="">contestado parcialmente</option>
+                                <option value="">pendiente</option>
+                                <option value="">rechazado</option>
+                            </select>
+                        </td>
+                        <td class="text-center"><input class="form-control text-center grupoCooperacion" th:field="*{pais}" disabled type="text"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+            <!--Tabla de Achivos Adjuntos-->
+            <div class="table-responsive mb-3">
+                <table class="table table-bordered">
+                    <caption class="obs">OBSERVACIONES </caption>
+                    <tbody>
+                        <tr class="table-danger">
+                            <th><em> Ingrese, en caso de ser necesario, alguna aclaración de la causa.</em></th>
+                        </tr>
+                        <td>
+                            <div class="form-floating">
+                                <textarea class="form-control" placeholder="Escriba aquí" th:field="*{observaciones}"
+                                    id="floatingTextarea"></textarea>
+
+                            </div>
+
+                        </td>
+                    </tbody>
+                </table>
+                <h3>ARCHIVOS ADJUNTOS</h3>
+                <div class="mb-3">
+                   <br>
+                    <input class="form-control form-control-md" id="formFile" type="file">
+                    <label for="formFile" class="form-label bg-secondary text-white p-1">Si tiene más de una sentencia para enviar, adjuntelas comprimidas</label>
+                  </div>
+                   
+            </div>
+
+
+   
+          <!-- Botones de acción -->
+          <div class="d-flex justify-content-end gap-2">
+            <button class="btn btn-danger" th:attr="onclick='window.location.href=\'' + @{/admin} + '\''">Cancelar</button>
+            <button class="btn btn-success" th:attr="onclick='window.location.href=\'' + @{/admin} + '\''">Cerrar</button>
+            <button class="btn btn-warning" th:attr="onclick='window.location.href=\'' + @{/admin} + '\''">Devolver Autoridad</button>
+        </div>
+    </div>
+</form>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+    </script>
+</body>
+
+</html>
