@@ -180,10 +180,10 @@ span{
     padding: 5px;
     border-radius: 3px;
 }
-
-/* Estilos para el modal */
+/*
+/* Estilos para el modal 
 .modal {
-    display: none; /* Oculto por defecto */
+    display: none; /* Oculto por defecto 
     position: fixed;
     z-index: 1000;
     left: 0;
@@ -193,7 +193,7 @@ span{
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-/* Contenedor del modal */
+/* Contenedor del modal 
 .modal-content {
     background-color: #fff;
     margin: 15% auto;
@@ -204,7 +204,7 @@ span{
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-
+*/
 .button-container {
     display: flex;
     justify-content: center;
@@ -216,6 +216,68 @@ span{
     gap: 10px; /* Espacio entre botones */
 }
 
+
+
+/*Estilo para el dialog*/
+dialog {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 300px; /* Ajusta el ancho según sea necesario */
+}
+
+dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+dialog .dialogo {
+    text-align: center;
+}
+
+dialog h4 {
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+
+dialog label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+dialog select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 20px;
+}
+
+dialog .button-container {
+    display: flex;
+    justify-content: space-around;
+}
+
+dialog button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+dialog #confirmAuthority {
+    background-color: #28a745; /* Verde */
+    color: white;
+}
+
+dialog #cancelAuthority {
+    background-color: #dc3545; /* Rojo */
+    color: white;
+}
+
+dialog button:hover {
+    opacity: 0.8;
+}
 
 
 /* Estilos para pantallas hasta 375px (iPhone XR en retrato) */

@@ -18,7 +18,6 @@ import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -56,6 +55,10 @@ public class HomeController {
     @GetMapping("/modificar")
     public String mostrarModificar() {
         return "modificar";
+    }
+    @GetMapping("/modificarEjemplo")
+    public String mostrarModificarEjemplo() {
+        return "modificarEjemplo";
     }
 
     @GetMapping("/form")
@@ -174,7 +177,7 @@ public class HomeController {
     public String editarCausa(@PathVariable Long id, Model model) {
         Causa causa = causaService.obtenerPorId(id).orElse(null);
         model.addAttribute("causa", causa);
-        return "nuevo"; // Se reutiliza la vista
+        return "modificar"; // Se reutiliza la vista
     }
     @GetMapping("/editarAdmin/{id}")
     public String editarCausaAdmin(@PathVariable Long id, Model model) {

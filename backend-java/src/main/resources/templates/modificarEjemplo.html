@@ -6,7 +6,6 @@
     <title>RECOPILACIÓN INFORMACIÓN ESTADÍSTICA</title>
     <link rel="icon" href="/imagenes/logo.ico">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
     <link rel="stylesheet" th:href="@{/css/styles_form.css}">
 </head>
 <body>
@@ -15,27 +14,25 @@
         <div class="container d-flex align-items-center">
             <img src="/imagenes/DAJUDECO.png" alt="Logo de DAJUDECO" class="navbar-logo mr-3">
             <a class="navbar-brand" th:href="@{menu}">Sistema Estadístico</a>
-            <button type="button" class="btn btn-outline-danger" th:attr="onclick='window.location.href=\'' + @{/inicio} + '\''">Cerrar
+            <button type="button" class="btn btn-outline-danger"  th:attr="onclick='window.location.href=\'' + @{/inicio} + '\''">Cerrar
                 Sesión</button>
         </div>
     </nav>
     <!--cuadro principal-->
-    <div class="container mt-4" id="contenedor" >
-        <form class="needs-validation" novalidate th:action="@{/guardar}" th:object="${causa}" method="post">
-             
+    <div class="container mt-4" id="contenedor">
+        <form class="needs-validation" novalidate>
             <div class="text-center mb-4">
                 <h1 class="text-center">RECOPILACIÓN INFORMACIÓN ESTADÍSTICA</h1>
                 <h2 class="text-center">GAFI - OCDE</h2>
                 <p class="usuario text-right">usuario: <b>Autoridad XXXX</b></p>
             </div>
             <!-- Tabla de Datos de la Causa -->
-            <div class="table-responsive">
+            <div class="table-responsive" >
                 <table class="table table-bordered mt-4">
                     <caption class="datos_causa">DATOS DE LA CAUSA</caption>
                     <thead class="table-primary">
                         <tr>
-                            <th>ID Lex <i class="bi bi-exclamation-circle" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Ingresar el número de Lex100 que figura en su sistema">
-                            </i></th>
+                            <th>ID Lex</th>
                             <th>Número de Expediente</th>
                             <th>Año Inicio</th>
                             <th>Año Ingreso</th>
@@ -46,30 +43,30 @@
                     <tbody>
                         <tr>
                             <!--Numero ID Lex-->
-                            <td class="text-center"><input required type="text" th:field="*{lex}" class="form-control text-center">
+                            <td class="text-center"><input disabled required type="text" class="form-control text-center" value="304">
                                 <div class="invalid-feedback">Este campo es obligatorio</div>
                             </td>
                             <!--Numero Expediente-->
-                            <td class="text-center"><input required class="form-control text-center" type="text" th:field="*{expediente}">
+                            <td class="text-center"><input disabled required class="form-control text-center" type="text" value="121/TO1">
                                 <div class="invalid-feedback">Este campo es obligatorio</div>
                             </td>
                             <!--Año Inicio-->
-                            <td class="text-center"><input required class="form-control text-center" type="number" th:field="*{anioInicio}">
+                            <td class="text-center"><input disabled required class="form-control text-center" type="number" value="2024">
                                 <div class="invalid-feedback">Este campo es obligatorio</div>
                             </td>
                             <td class="text-center">
                                 <!--Año Ingreso-->
-                                <select class="form-select form-select-sm text-center" th:field="*{anioIngreso}" required>
-                                    <option value="0">Seleccione una opción</option>
-                                    <option value="2017">2017</option>
-                                    <option value="2018">2018</option>
-                                    <option value="2019">2019</option>
-                                    <option value="2020">2020</option>
-                                    <option value="2021">2021</option>
-                                    <option value="2022">2022</option>
-                                    <option value="2023">2023</option>
-                                    <option value="2024">2024</option>
-                                    <option value="2025">2025</option>
+                                <select class="form-select form-select-sm text-center" required disabled>
+                                    <option value="">- Seleccione un año -</option>
+                                    <option value="17">2017</option>
+                                    <option value="18">2018</option>
+                                    <option value="19">2019</option>
+                                    <option value="20">2020</option>
+                                    <option value="21">2021</option>
+                                    <option value="22">2022</option>
+                                    <option value="23">2023</option>
+                                    <option value="24" selected>2024</option>
+                                    <option value="25">2025</option>
                                 </select>
                                 <div class="invalid-feedback">Este campo es obligatorio</div>
                             </td>
@@ -77,17 +74,17 @@
                             <td class="text-center">
                                 <!--Delito-->
                                 <select class="form-select form-select-sm text-center" aria-label="Small select example"
-                                    required id="enableSelect"  th:field="*{delito}" onchange="enableLavado()">
+                                    required id="enableSelect" disabled>
                                     <option value="">- Seleccione uno -</option>
                                     <optgroup label="OCDE">
-                                        <option value="Cohecho">Cohecho</option>
-                                        <option value="Concusión">Concusión</option>
-                                        <option value="Enriquecimiento Ilícito de func. y emp.">Enriquecimiento Ilícito de func. y emp.</option>
-                                        <option value="Soborno Trasnacional">Soborno Trasnacional</option>
-                                        <option value="Tráfico de influencias nacional">Tráfico de influencias nacional</option>
+                                        <option value="cohecho">Cohecho</option>
+                                        <option value="concusion">Concusión</option>
+                                        <option value="EnrIli">Enriquecimiento Ilícito de func. y emp.</option>
+                                        <option value="soborno">Soborno Trasnacional</option>
+                                        <option value="trafico">Tráfico de influencias nacional</option>
                                     </optgroup>
                                     <optgroup label="GAFI">
-                                        <option value="Lavado de Activos (Arts. 303 y 304 CPN)">Lavado de Activos (Arts. 303 y 304 CPN)</option>
+                                        <option value="Lavado" selected>Lavado de Activos (Arts. 303 y 304 CPN)</option>
                                     </optgroup>
                                 </select>
                                 <div class="invalid-feedback">Este campo es obligatorio</div>
@@ -95,8 +92,8 @@
                             <td class="text-center">
                                 <!--Delito Precedente-->
                                 <select class="form-select form-select-sm text-center" aria-label="Small select example"
-                                    id="lavado" th:field="*{delitoPrecdedente}" disabled>
-                                    <option value="">- Seleccione Uno -</option>
+                                     disabled>
+                                    <option value>- Seleccione Uno -</option>
                                     <option value="">Contrabando agravado </option>
                                     <option value="">Usura </option>
                                     <option value="">Evasión tributaria </option>
@@ -105,7 +102,7 @@
                                     <option value="">Delitos cambiarios/ Régimen Penal Cambiario</option>
                                     <option value="">Contrabando simple </option>
                                     <option value="">Cohecho y tráfico de influencias </option>
-                                    <option value="">Narcotráfico </option>
+                                    <option value="" selected>Narcotráfico </option>
                                     <option value="">Falsedades y omisiones de documentación contable </option>
                                     <option value="">Encubrimiento </option>
                                     <option value="">Intermediación financiera no autorizada </option>
@@ -142,31 +139,31 @@
                         <tbody>
                             <tr>
                                 <!--Estado Procesal-->
-                                <td> <select class="form-select form-select-sm text-center" th:field="*{estado}" required>
+                                <td> <select class="form-select form-select-sm text-center" required>
                                         <option value="">- Seleccione uno -</option>
-                                        <option value="Oposición de elevación a juicio">Oposición de elevación a juicio</option>
-                                        <option value="Incidente de falta de acción">Incidente de falta de acción</option>
-                                        <option value="Contienda">Contienda </option>
-                                        <option value="Elevación a Juicio">Elevación a Juicio</option>
-                                        <option value="Etapa de Juicio Oral">Etapa de Juicio Oral</option>
-                                        <option value="Incompetencia">Incompetencia</option>
-                                        <option value="Con Requerimiento de Instrucción">Con Requerimiento de Instrucción</option>
-                                        <option value="Delegada en MPF">Delegada en MPF</option>
-                                        <option value="Con Indagatoria"> Con Indagatoria</option>
-                                        <option value="Con falta de Merito">Con falta de Merito</option>
-                                        <option value="Instrucción suplementaria">Instrucción suplementaria</option>
-                                        <option value="Exhorto en trámite ">Exhorto en trámite </option>
-                                        <option value="Suspensión del juicio a prueba">Suspensión del juicio a prueba</option>
-                                        <option value="Procesamiento">Procesamiento</option>
-                                        <option value="Sentencia">Sentencia</option>
-                                        <option value="Sobreseimiento">Sobreseimiento</option>
-                                        <option value="Trámite">Trámite</option>
+                                        <option value="">Oposición de elevación a juicio</option>
+                                        <option value="">Incidente de falta de acción</option>
+                                        <option value="">Contienda </option>
+                                        <option value="">Elevación a Juicio</option>
+                                        <option value="">Etapa de Juicio Oral</option>
+                                        <option value="">Incompetencia</option>
+                                        <option value="">Con Requerimiento de Instrucción</option>
+                                        <option value="">Delegada en MPF</option>
+                                        <option value=""> Con Indagatoria</option>
+                                        <option value="">Con falta de Merito</option>
+                                        <option value="">Instrucción suplementaria</option>
+                                        <option value="">Exhorto en trámite </option>
+                                        <option value="">Suspensión del juicio a prueba</option>
+                                        <option value="">Procesamiento</option>
+                                        <option value="">Sentencia</option>
+                                        <option value="">Sobreseimiento</option>
+                                        <option value="" selected>Trámite</option>
                                     </select>
                                     <div class="invalid-feedback">Este campo es obligatorio</div>
                                 </td>
                                 <td>
                                     <!--Fecha Estado Procesal-->
-                                    <input required class="form-control text-center" type="date" th:field="*{fecha}" >
+                                    <input required class="form-control text-center" type="date" value="2024-05-10">
                                     <div class="invalid-feedback">Este campo es obligatorio</div>
                                 </td>
                             </tr>
@@ -188,27 +185,27 @@
                             <tr>
                                 <td>
                                     <select class="form-select form-select-sm text-center" id="selectOption"
-                                        onchange="enableSentencia()" required th:field="*{sentencia}">
+                                        onchange="enableSentencia()" required>
                                         <option value="">-Seleccione Uno-</option>
                                         <option value="NO">NO</option>
-                                        <option value="SI">SI</option>
+                                        <option value="SI" selected>SI</option>
                                     </select>
                                     <div class="invalid-feedback">Este campo es obligatorio</div>
                                 </td>
                                 <td>
                                     <!--Tipo Sentencia-->
-                                    <select class="form-select form-select-sm text-center" id="textInput" disabled th:field="*{tipoSentencia}">
+                                    <select class="form-select form-select-sm text-center" id="textInput" >
                                         <option value=""> - Seleccione Uno -</option>
                                         <option value="mixta">Mixta</option>
-                                        <option value="Condenatoria">Condenatoria</option>
+                                        <option value="Condenatoria" selected>Condenatoria</option>
                                         <option value="abso">Absolutoria</option>
                                     </select>
                                 </td>
                                 <td>
                                     <!--Sentencia Firme-->
-                                    <select class="form-select form-select-sm text-center" id="textInput" disabled th:field="*{sentenciaFirme}">
+                                    <select class="form-select form-select-sm text-center" id="textInput" >
                                         <option value="">- Seleccione Uno -</option>
-                                        <option value="si"> SI</option>
+                                        <option value="si" selected> SI</option>
                                         <option value="no">NO</option>
                                     </select>
                                 </td>
@@ -231,11 +228,11 @@
                     <tbody>
                         <tr>
                             <td class="text-center"><input class="form-control text-center" type="text" id="firstInput"
-                                    oninput="enableInputs()" th:field="*{organismoPublicos}"></td>
+                                    oninput="enableInputs()" value="UIF"></td>
                             <td class="text-center"><input class="form-control text-center" type="text"
-                                    id="additionalInput" disabled th:field="*{calidad}"></td>
+                                    id="additionalInput" value="Requerimiento"></td>
                             <td class="text-center"><input class="form-control text-center" type="text"
-                                    id="additionalInput" disabled  th:field="*{fiscaliasEspecializadas}"></td>
+                                    id="additionalInput" ></td>
                         </tr>
                     </tbody>
                 </table>
@@ -256,18 +253,18 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="text-center"><input class="form-control text-center" th:field="*{imputados}" type="number"
-                                    oninput="enableSecondTable()" id="pf"></td>
-                            <td class="text-center"><input class="form-control text-center" th:field="*{procesados}" type="number"
-                                    oninput="enableSecondTable()" id="pf"></td>
-                            <td class="text-center"><input class="form-control text-center" th:field="*{suspension}" type="number"
-                                    oninput="enableSecondTable()" id="pf"></td>
-                            <td class="text-center"><input class="form-control text-center" th:field="*{sobreseidos}" type="number"
-                                    oninput="enableSecondTable()" id="pf"></td>
-                            <td class="text-center"><input class="form-control text-center" th:field="*{condenados}" type="number"
-                                    oninput="enableSecondTable()" id="pf"></td>
-                            <td class="text-center"><input class="form-control text-center" th:field="*{absueltos}" type="number"
-                                    oninput="enableSecondTable()" id="pf"></td>
+                            <td class="text-center"><input class="form-control text-center" type="number"
+                                    oninput="enableSecondTable()" id="pf" value=""></td>
+                            <td class="text-center"><input class="form-control text-center" type="number"
+                                    oninput="enableSecondTable()" id="pf" value="2"></td>
+                            <td class="text-center"><input class="form-control text-center" type="number"
+                                    oninput="enableSecondTable()" id="pf" value="1"></td>
+                            <td class="text-center"><input class="form-control text-center" type="number"
+                                    oninput="enableSecondTable()" id="pf" value=""></td>
+                            <td class="text-center"><input class="form-control text-center" type="number"
+                                    oninput="enableSecondTable()" id="pf" value="7"></td>
+                            <td class="text-center"><input class="form-control text-center" type="number"
+                                    oninput="enableSecondTable()" id="pf" value="2"></td>
 
                         </tr>
                     </tbody>
@@ -276,21 +273,19 @@
             <!--Tabla de Funcionarios Publicos-->
             <div class="table-responsive mb-3">
                 <table class="table table-bordered">
-                    <caption class="fun_pub_inv">FUNCIONARIOS PÚBLICOS INVOLUCRADES</caption>
+                    <caption class="fun_pub_inv">FUNCIONARIOS PÚBLICOS</caption>
                     <thead class="table-warning">
                         <tr>
-                            <th>Calidad
-                            <br><i>Imputado, Procesado, Condenado, etc.</i>
-                        </th>
+                            <th>Calidad</th>
                             <th>Cantidad</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="text-center "><input class="form-control text-center" type="text"  th:field="*{calidadFunPublico}" id="desbloquear"
-                                    disabled></td>
-                            <td class="text-center"><input class="form-control text-center" type="text" th:field="*{cantidadFunPublico}"  id="desbloquear"
-                                    disabled></td>
+                            <td class="text-center "><input class="form-control text-center" type="text" id="desbloquear"
+                                    value="Condenado"></td>
+                            <td class="text-center"><input class="form-control text-center" type="text" id="desbloquear"
+                                    value="1"></td>
                         </tr>
                     </tbody>
                 </table>
@@ -307,17 +302,17 @@
                     </thead>
                     <tbody>
                         <td class="text-center align-middle">
-                            <select class="form-select d-inline w-auto" id="selectOpt" th:field="*{vehiculoPersJuridica}" onchange="enableVehiculoJuridica()" required>
+                            <select class="form-select d-inline w-auto" id="selectOpt" onchange="enableVehiculoJuridica()" required>
                                 <option value="">- Seleccione Uno -</option>
-                                <option value="SI"> SI</option>
+                                <option value="SI" selected> SI</option>
                                 <option value="NO">NO</option>
                             </select>
                             <div class="invalid-feedback">Este campo es obligatorio</div>
                         </td>
                         <td class="text-center">
-                            <select class="form-select d-inline w-auto" id="juridica" th:field="*{tipoPersJuridica}" disabled>
+                            <select class="form-select d-inline w-auto" id="juridica">
                                 <option value="">-Seleccione Uno-</option>
-                                <option value="">S.A.</option>
+                                <option value="" selected>S.A.</option>
                                 <option value="">S.R.L.</option>
                                 <option value="">S.A.S</option>
                                 <option value="">S.C.A.</option>
@@ -346,9 +341,9 @@
                         <tr>
                             <!--Tipo de Persona Jurídica-->
                             <td class="text-center">
-                                <select class="form-select d-inline w-auto" id="juridico" th:field="*{tipoPersonaJuridica}" onchange="enableJuridico()">
+                                <select class="form-select d-inline w-auto" id="juridico" onchange="enableJuridico()">
                                 <option value="default">-Seleccione Uno-</option>
-                                <option value="">S.A.</option>
+                                <option value="" selected>S.A.</option>
                                 <option value="">S.R.L.</option>
                                 <option value="">S.A.S</option>
                                 <option value="">S.C.A.</option>
@@ -357,19 +352,19 @@
                             </select></td>
                             <!--Imputados-->
                             <td class="text-center">
-                                <input class="form-control text-center grupoJuridico" th:field="*{imputadoPJ}" type="number" disabled></td>
+                                <input class="form-control text-center grupoJuridico" type="number" value="2"></td>
                             <!-- Procesados -->
                             <td class="text-center">
-                                <input class="form-control text-center grupoJuridico" th:field="*{procesadoPJ}" type="number" disabled></td>
+                                <input class="form-control text-center grupoJuridico" type="number" value="1"></td>
                             <!-- Absueltos -->
                             <td class="text-center">
-                                <input class="form-control text-center grupoJuridico" th:field="*{absueltoPJ}" type="number" disabled></td>
+                                <input class="form-control text-center grupoJuridico" type="number" ></td>
                             <!-- Sancionados -->
                             <td class="text-center">
-                                <input class="form-control text-center grupoJuridico" th:field="*{sancionadoPJ}" type="number" disabled></td>
+                                <input class="form-control text-center grupoJuridico" type="number" ></td>
                             <!-- Tipo de Sanción -->
                             <td> 
-                                <select class="form-select form-select-sm text-center grupoJuridico" th:field="*{tipoSancion}" disabled>
+                                <select class="form-select form-select-sm text-center grupoJuridico" >
                                     <option value="">- Seleccione Uno -</option>
                                     <option value="">Pérdida o suspensión de los beneficios estatales que tiene la
                                         persona
@@ -395,7 +390,7 @@
             <div class="table-responsive mb-3">
                 <table class="table table-bordered">
                     <caption class="recupero">INFORMACIÓN SOBRE RECUPERO DE ACTIVOS</caption>
-                    <thead>
+                    <trhead>
                         <tr class="table-secondary">
                             <th>Tipo de medida</th>
                             <th>Fecha de la medida</th>
@@ -405,12 +400,13 @@
                             <th>Vehículos </th>
                             <th>Vehículos </th>
                         </tr>
-                    </thead>
+                    </trhead>
                     <tbody>
                         <tr>
                             <!-- Tipo de medida -->
-                            <td><select class="form-select form-select-sm text-center" id="medidas" onchange="enableMedidas()" th:field="*{tipoMedida}" >
+                            <td><select class="form-select form-select-sm text-center" id="medidas" onchange="enableMedidas()">
                                     <option value="default">- Seleccione Uno -</option>
+                                    <option selected>Embargo Preventivo</option>
                                     <option value=""> Decomiso con Condena</option>
                                     <option value="">Decomiso Sin Condena por Otro motivo de suspención o Extinción de la acción penal</option>
                                     <option value="">Decomiso Sin Condena por Prescripción</option>
@@ -423,15 +419,15 @@
                                     <option value="">Otro</option>
                                 </select> </td>
                             <!-- Fecha de la medida -->
-                            <td><input class="form-control text-center grupoMedidas" type="date" th:field="*{fechaMedida}" > </td>
+                            <td><input class="form-control text-center grupoMedidas" type="date" value="2024-05-10"> </td>
                             <!-- Inmuebles cantidad-->
-                            <td class="text-center"><input class="form-control text-center grupoMedidas" th:field="*{inmuebles}"  type="number" placeholder="Cantidad"></td>
+                            <td class="text-center"><input class="form-control text-center grupoMedidas" type="number" value="2"></td>
                             <!-- Inmuebles valor -->
-                            <td class="text-center"><input class="form-control text-center grupoMedidas" th:field="*{inmueblesValor}"  type="number" placeholder="Valorización total estimada"></td>
+                            <td class="text-center"><input class="form-control text-center grupoMedidas" type="number" value="122222"></td>
                              <!-- Vehículos Tipo -->
-                             <td> <select class="form-select form-select-sm text-center grupoMedidas" th:field="*{tipoVehiculo}" >
+                             <td> <select class="form-select form-select-sm text-center grupoMedidas">
                                 <option value="">- Seleccione Uno -</option>
-                                <option value="">Auto</option>
+                                <option value="" selected>Auto</option>
                                 <option value="">Camión</option>
                                 <option value="">Camioneta</option>
                                 <option value="">Moto</option>
@@ -442,10 +438,10 @@
                                 <option value="">Otros</option>
                             </select></td>
                             <!-- Vehículos cantidad-->
-                            <td class="text-center"><input class="form-control text-center grupoMedidas" type="number" placeholder="Cantidad" th:field="*{vehiculo}" ></td>
+                            <td class="text-center"><input class="form-control text-center grupoMedidas" type="number" value="3"></td>
                            
                             <!-- Vehículos  valor -->
-                            <td class="text-center"><input class="form-control text-center grupoMedidas" type="number"  th:field="*{vehiculoValor}" placeholder="Valorización total estimada"></td>
+                            <td class="text-center"><input class="form-control text-center grupoMedidas" type="number" placeholder="Valorización total estimada"></td>
 
                         </tr>
                     </tbody>
@@ -455,7 +451,7 @@
             <div class="table-responsive mb-3">
                 <table class="table table-bordered">
                     <caption class="recupero">INFORMACIÓN SOBRE RECUPERO DE ACTIVOS</caption>
-                    <thead>
+                    <trhead>
                         <tr class="table-secondary">
                             <th>Equipos electrónicos <br><small><i>(ceulares, computadoras, etc)</i></small>
                             </th>
@@ -467,10 +463,10 @@
                         <tbody>
                             <!-- Ejemplo de datos -->
                             <tr>
-                                <td class="text-center"><input th:field="*{equipoElectronico}" class="form-control text-center grupoMedidas" type="number" placeholder="Cantidad"></td>
-                                <td class="text-center"><input th:field="*{equipoElectronicoValor}" class="form-control text-center grupoMedidas" type="number" placeholder="Valorización total estimada"></td>
-                                <td class="text-center"><input th:field="*{productoFinanciero}" class="form-control text-center grupoMedidas" type="number" placeholder="Cantidad"></td>
-                                <td class="text-center"><input th:field="*{productoFinancieroValor}" class="form-control text-center grupoMedidas" type="number" placeholder="Valorización total estimada"></td>
+                                <td class="text-center"><input class="form-control text-center grupoMedidas" type="number" value="2"></td>
+                                <td class="text-center"><input class="form-control text-center grupoMedidas" type="number" value="5000"></td>
+                                <td class="text-center"><input class="form-control text-center grupoMedidas" type="number" value="1"></td>
+                                <td class="text-center"><input class="form-control text-center grupoMedidas" type="number" value="200"></td>
 
                                 
                             </tr>
@@ -495,26 +491,26 @@
                         <td class="text-center">
                             <div class="input-group">
                                 <span class="input-group-text">$</span>
-                                <input class="form-control text-center grupoMedidas" th:field="*{pesos}" type="number" placeholder="Monto">
+                                <input class="form-control text-center grupoMedidas" type="number" value="500000">
                             </div>
                         </td>
                         <td class="text-center">
                             <div class="input-group">
                                 <span class="input-group-text">USD</span>
-                                <input class="form-control text-center grupoMedidas" th:field="*{dolares}" type="number" placeholder="Monto" >
+                                <input class="form-control text-center grupoMedidas" type="number" value="780" >
                             </div>
                         </td>
                         <td class="text-center">
                             <div class="input-group">
                                 <span class="input-group-text">€</span>
-                                <input class="form-control text-center grupoMedidas" th:field="*{euros}" type="number" placeholder="Monto">
+                                <input class="form-control text-center grupoMedidas" type="number" value="38">
                             </div>
                         </td>
                         <td class="text-center">
-                            <input class="form-control text-center grupoMedidas" th:field="*{otrasMonedas}" type="text" placeholder="Tipo y Monto">
+                            <input class="form-control text-center grupoMedidas" type="text" pvalue="$800000 guaranies">
                         </td>
                         <td class="text-center">
-                            <input class="form-control text-center grupoMedidas" th:field="*{otros}" type="text" placeholder="Cantidad y valorización total estimada">
+                            <input class="form-control text-center grupoMedidas" type="text" placeholder="Cantidad y valorización total estimada">
                         </td>
                     </tr>
                 </tbody>
@@ -535,23 +531,23 @@
                     <tbody>
                         <!-- Ejemplo de datos -->
                         <tr>
-                            <td class="text-center"><select class="form-select form-select-md text-center d-inline w-auto" th:field="*{tipoCooperacion}" id="cooperacion" onchange="enableCooperacion()">
+                            <td class="text-center"><select class="form-select form-select-md text-center d-inline w-auto" id="cooperacion" onchange="enableCooperacion()">
                                 <option value="default">- Seleccione Uno -</option>
                                 <option value="">Exhorto librado</option>
                                 <option value="">Exhorto tramitado</option>
-                                <option value="">Extradición solicitada</option>
+                                <option value="" selected>Extradición solicitada</option>
                                 <option value="">Extradición tramitado</option>
                             </select></td>
                             <td>
-                                <select class="form-select form-select-md text-center d-inline w-auto grupoCooperacion" th:field="*{estadoCooperacion}" disabled>
+                                <select class="form-select form-select-md text-center d-inline w-auto grupoCooperacion" >
                                     <option value="">- Seleccione Uno -</option>
                                     <option value="">contestado</option>
                                     <option value="">contestado parcialmente</option>
-                                    <option value="">pendiente</option>
+                                    <option value="" selected>pendiente</option>
                                     <option value="">rechazado</option>
                                 </select>
                             </td>
-                            <td class="text-center"><input class="form-control text-center grupoCooperacion" th:field="*{pais}" disabled type="text"></td>
+                            <td class="text-center"><input class="form-control text-center grupoCooperacion" value="Uruguay" type="text"></td>
                         </tr>
                     </tbody>
                 </table>
@@ -566,8 +562,10 @@
                             </tr>
                             <td>
                                 <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Escriba aquí" th:field="*{observaciones}"
-                                        id="floatingTextarea"></textarea>
+                                    <textarea class="form-control" placeholder="Escriba aquí"
+                                        id="floatingTextarea">
+                                        Los inmuebles son una casa en el extranjero y un departamento en la Costa Atlántica
+                                    </textarea>
 
                                 </div>
 
@@ -585,75 +583,65 @@
                 <!-- Botones de acción -->
                 <div class="d-flex justify-content-end gap-2">
                     <button class="btn btn-danger" th:attr="onclick='window.location.href=\'' + @{/menu} + '\''">Cancelar</button>
-                    <button class="btn btn-success" type="submit">Guardar</button>
-                    <button class="btn btn-warning" onclick="openDialog()">Cambio de Autoridad</button>
-                </div>       
-
-                <dialog id="authorityDialog" closedby="any">
-                    <div class="dialogo">
-                        <h4>Seleccionar Nueva Autoridad</h4>
-                        <label for="authoritySelect">Elige una autoridad:</label>
-                        <select id="authoritySelect">
-                            <option value="autoridad1">Autoridad 1</option>
-                            <option value="autoridad2">Autoridad 2</option>
-                            <option value="autoridad3">Autoridad 3</option>
-                        </select>
-                        <br><br>
-                        <div class="button-container">
-                            <button class="btn btn-success" id="confirmAuthority">Confirmar</button>
-                            <button class="btn btn-danger btn-md" id="cancelAuthority">Cancelar</button>
-                        </div>
+                    <button class="btn btn-success" th:attr="onclick='window.location.href=\'' + @{/menu} + '\''">Guardar</button>
+                    <button class="btn btn-warning" onclick="openModal()">Cambio de Autoridad</button>
+                </div>
+            <!-- Modal (Pop-up) -->
+            <div id="authorityModal" class="modal">
+                <div class="modal-content">
+                   
+                    <h3>Seleccionar Nueva Autoridad</h3>
+                    <label for="authoritySelect">Elige una autoridad:</label>
+                    <select id="authoritySelect">
+                        <option value="autoridad1">Autoridad 1</option>
+                        <option value="autoridad2">Autoridad 2</option>
+                        <option value="autoridad3">Autoridad 3</option>
+                    </select>
+                    <br><br>
+                    
+                    <div class="button-container">
+                        <button class="btn btn-success" onclick="submitAuthority()">Confirmar</button>
+                        <button class="btn btn-danger btn-md" onclick="closeModal()">Cancelar</button>
                     </div>
-                </dialog>
-
+            
+                </div>
+            </div>
         </form>
     </div>
 
     <!--Scripts-->
-    <script th:src="@{/js/nuevo.js}"> </script>
+    <script th:src="@{/js/modificar.js}"> </script>
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-        const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
-    </script>
-    <script>
-
-const authorityDialog = document.getElementById("authorityDialog");
-const confirmAuthority = document.getElementById("confirmAuthority");
-const cancelAuthority = document.getElementById("cancelAuthority");
-const authoritySelect = document.getElementById("authoritySelect");
-
-// Función para abrir el diálogo
-function openDialog() {
-    authorityDialog.showModal();
-}
-
-// Función para cerrar el diálogo
-function closeDialog() {
-    authorityDialog.close();
-}
-
-// Evento para confirmar la autoridad
-confirmAuthority.addEventListener("click", () => {
-    const selectedAuthority = authoritySelect.value;
-    alert("Nueva autoridad seleccionada: " + selectedAuthority);
-    closeDialog();
-    window.location.href = "/menu";
-});
-
-// Evento para cancelar el diálogo
-cancelAuthority.addEventListener("click", () => {
-    closeDialog();
-});
-
-// Evento para cerrar el diálogo si se presiona la tecla Esc
-authorityDialog.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-        closeDialog();
-    }
-});
-        </script>
     
+<script>
+
+    // Función para abrir el modal
+    function openModal() {
+        document.getElementById("authorityModal").style.display = "block";
+    }
+    
+    // Función para cerrar el modal
+    function closeModal() {
+        document.getElementById("authorityModal").style.display = "none";
+    }
+    
+    // Función para enviar la nueva autoridad seleccionada
+    function submitAuthority(event) {
+    event.preventDefault(); // Previene que se recargue la página
+    const selectedAuthority = document.getElementById("authoritySelect").value;
+    alert("Nueva autoridad seleccionada: " + selectedAuthority);
+    closeModal();
+    window.location.href = 'menu.html';
+}
+
+    // Cerrar el modal si el usuario hace clic fuera de él
+    window.onclick = function(event) {
+        const modal = document.getElementById("authorityModal");
+        if (event.target === modal) {
+            closeModal();
+        }
+    };
+    </script>
 </body>
 </html>

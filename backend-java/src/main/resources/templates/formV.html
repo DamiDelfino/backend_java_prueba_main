@@ -579,13 +579,15 @@
                    
             </div>
 
+            
+
 
    
           <!-- Botones de acción -->
           <div class="d-flex justify-content-end gap-2">
             <button class="btn btn-danger" th:attr="onclick='window.location.href=\'' + @{/admin} + '\''">Cancelar</button>
             <button class="btn btn-success" th:attr="onclick='window.location.href=\'' + @{/admin} + '\''">Cerrar</button>
-            <button class="btn btn-warning" th:attr="onclick='window.location.href=\'' + @{/admin} + '\''">Devolver Autoridad</button>
+            <button class="btn btn-warning" th:attr="onclick='window.location.href=\'' + @{/admin} + '\''">Devolver a la Autoridad</button>
         </div>
     </div>
 </form>
@@ -596,6 +598,7 @@
         const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
         const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
     </script>
+  
 </body>
 
 </html>
