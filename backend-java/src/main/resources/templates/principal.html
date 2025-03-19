@@ -12,29 +12,9 @@
 </head>
 
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-dark " style="background-color: #343a40 !important;">
-      <div class="container d-flex align-items-center">
-        <img th:src="@{/imagenes/DAJUDECO.png}" alt="Logo de DAJUDECO" class="navbar-logo mr-3">
-          <a class="navbar-brand" th:href="@{/principal}">Sistema Estadístico</a>
+          <!--Navbar desde navbarAutoridad-->
+  <div th:replace="~{navbarAutoridad :: navbar}"></div>
 
-          <!-- Menú Desplegable -->
-          <div class="dropdown">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Menú
-              </button>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" th:href="@{/principal}">Requerimientos</a>
-                      <a class="dropdown-item" th:href="@{/notificaciones}">Notificaciones</a>
-                      <hr>
-                  <button type="button" class="btn btn-outline-danger"
-                  th:attr="onclick='window.location.href=\'' + @{/inicio} + '\''">Cerrar Sesión</button>
-              </div>
-
-          </div>
-      </div>
-  </nav>
     <div class="container mt-4" id="contenedor">
         <h1 class="text-center">RECOPILACIÓN INFORMACIÓN ESTADÍSTICA</h1>
         <h2 class="text-center">GAFI - OCDE</h2>

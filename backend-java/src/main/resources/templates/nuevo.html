@@ -316,12 +316,12 @@
                         <td class="text-center">
                             <select class="form-select d-inline w-auto" id="juridica" th:field="*{tipoPersJuridica}" disabled>
                                 <option value="">-Seleccione Uno-</option>
-                                <option value="">S.A.</option>
-                                <option value="">S.R.L.</option>
-                                <option value="">S.A.S</option>
-                                <option value="">S.C.A.</option>
-                                <option value="">O.N.G.</option>
-                                <option value="">Otros</option>
+                                <option value="S.A.">S.A.</option>
+                                <option value="S.R.L.">S.R.L.</option>
+                                <option value="S.A.S">S.A.S</option>
+                                <option value="S.C.A.">S.C.A.</option>
+                                <option value="O.N.G.">O.N.G.</option>
+                                <option value="Otros">Otros</option>
                             </select></td>
                     </tbody>
                 </table>
@@ -347,12 +347,12 @@
                             <td class="text-center">
                                 <select class="form-select d-inline w-auto" id="juridico" th:field="*{tipoPersonaJuridica}" onchange="enableJuridico()">
                                 <option value="default">-Seleccione Uno-</option>
-                                <option value="">S.A.</option>
-                                <option value="">S.R.L.</option>
-                                <option value="">S.A.S</option>
-                                <option value="">S.C.A.</option>
-                                <option value="">O.N.G.</option>
-                                <option value="">Otros</option>
+                                <option value="S.A.">S.A.</option>
+                                <option value="S.R.L.">S.R.L.</option>
+                                <option value="S.A.S">S.A.S</option>
+                                <option value="S.C.A.">S.C.A.</option>
+                                <option value="O.N.G.">O.N.G.</option>
+                                <option value="Otros">Otros</option>
                             </select></td>
                             <!--Imputados-->
                             <td class="text-center">
@@ -370,19 +370,15 @@
                             <td> 
                                 <select class="form-select form-select-sm text-center grupoJuridico" th:field="*{tipoSancion}" disabled>
                                     <option value="">- Seleccione Uno -</option>
-                                    <option value="">Pérdida o suspensión de los beneficios estatales que tiene la
-                                        persona
-                                        jurídica.</option>
-                                    <option value="">Suspensión para participar en concursos o licitaciones estatales.
+                                    <option value="Pérdida o suspensión de los beneficios estatales que tiene la persona jurídica.">Pérdida o suspensión de los beneficios estatales que tiene la persona jurídica.</option>
+                                    <option value="Suspensión para participar en concursos o licitaciones estatales.">Suspensión para participar en concursos o licitaciones estatales.
                                     </option>
-                                    <option value=""> Suspensión parcial de actividades.</option>
-                                    <option value="">Suspensión total de actividades. </option>
-                                    <option value="">Multa. </option>
-                                    <option value=""> Disolución y liquidación de la personería.</option>
-                                    <option value="">Publicación de una síntesis de la sentencia que la condena a costa
-                                        de
-                                        la persona jurídica</option>
-                                    <option value="">Cancelación de la Personería</option>
+                                    <option value="Suspensión parcial de actividades.">Suspensión parcial de actividades.</option>
+                                    <option value="Suspensión total de actividades.">Suspensión total de actividades.</option>
+                                    <option value="Multa.">Multa.</option>
+                                    <option value="Disolución y liquidación de la personería.">Disolución y liquidación de la personería.</option>
+                                    <option value="Publicación de una síntesis de la sentencia que la condena a costa de la persona jurídica">Publicación de una síntesis de la sentencia que la condena a costa de la persona jurídica</option>
+                                    <option value="Cancelación de la Personería">Cancelación de la Personería</option>
                                 </select></td>
 
 
@@ -430,15 +426,15 @@
                              <!-- Vehículos Tipo -->
                              <td> <select class="form-select form-select-sm text-center grupoMedidas" th:field="*{tipoVehiculo}" >
                                 <option value="">- Seleccione Uno -</option>
-                                <option value="">Auto</option>
-                                <option value="">Camión</option>
-                                <option value="">Camioneta</option>
-                                <option value="">Moto</option>
-                                <option value="">Aeronave</option>
-                                <option value="">Helicoptero</option>
-                                <option value="">Maquina Agrícola</option>
-                                <option value="">Colectivo</option>
-                                <option value="">Otros</option>
+                                <option value="Auto">Auto</option>
+                                <option value="Camión">Camión</option>
+                                <option value="Camioneta">Camioneta</option>
+                                <option value="Moto">Moto</option>
+                                <option value="Aeronave">Aeronave</option>
+                                <option value="Helicoptero">Helicoptero</option>
+                                <option value="Maquina Agrícola">Maquina Agrícola</option>
+                                <option value="Colectivo">Colectivo</option>
+                                <option value="Otros">Otros</option>
                             </select></td>
                             <!-- Vehículos cantidad-->
                             <td class="text-center"><input class="form-control text-center grupoMedidas" type="number" placeholder="Cantidad" th:field="*{vehiculo}" ></td>
@@ -536,18 +532,18 @@
                         <tr>
                             <td class="text-center"><select class="form-select form-select-md text-center d-inline w-auto" th:field="*{tipoCooperacion}" id="cooperacion" onchange="enableCooperacion()">
                                 <option value="default">- Seleccione Uno -</option>
-                                <option value="">Exhorto librado</option>
-                                <option value="">Exhorto tramitado</option>
-                                <option value="">Extradición solicitada</option>
-                                <option value="">Extradición tramitado</option>
+                                <option value="Exhorto librado">Exhorto librado</option>
+                                <option value="Exhorto tramitado">Exhorto tramitado</option>
+                                <option value="Extradición solicitada">Extradición solicitada</option>
+                                <option value="Extradición tramitado">Extradición tramitado</option>
                             </select></td>
                             <td>
                                 <select class="form-select form-select-md text-center d-inline w-auto grupoCooperacion" th:field="*{estadoCooperacion}" disabled>
                                     <option value="">- Seleccione Uno -</option>
-                                    <option value="">contestado</option>
-                                    <option value="">contestado parcialmente</option>
-                                    <option value="">pendiente</option>
-                                    <option value="">rechazado</option>
+                                    <option value="contestado">Contestado</option>
+                                    <option value="contestado parcialmente">Contestado parcialmente</option>
+                                    <option value="pendiente">Pendiente</option>
+                                    <option value="rechazado">Rechazado</option>
                                 </select>
                             </td>
                             <td class="text-center"><input class="form-control text-center grupoCooperacion" th:field="*{pais}" disabled type="text"></td>

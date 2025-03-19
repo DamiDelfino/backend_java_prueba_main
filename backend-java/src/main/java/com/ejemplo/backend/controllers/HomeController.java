@@ -78,7 +78,7 @@ public class HomeController {
             for (Causa causa : causas) {
                 System.out.println("Expediente: " + causa.getExpediente() + ", Delito: " + causa.getDelito()
                         + ",expediente: " + causa.getExpediente() + ", Fecha Admin: " + causa.getFechaAdmin()
-                        + "Requerimiento: " + causa.getRequerimiento());
+                        + "Requerimiento: " + causa.getRequerimiento());//Para ver si las obtiene o no
                 model.addAttribute("causas", causas);
             }
             return "admin";
@@ -92,12 +92,13 @@ public class HomeController {
         }
     
         @GetMapping("/nuevo")
+        //Cuando selecciona la autoridad una causa para editar
         public String mostrarNuevo(Model model) {
             model.addAttribute("causa", new Causa());
             return "nuevo";
         }
     
-    
+        //Cuando seleccionamos la opcion de visualizar lo que nos manda la autoridad
         @GetMapping("/formV")
         public String mostrarNuevoAdmin(Model model) {
             model.addAttribute("causa", new Causa());
@@ -176,12 +177,14 @@ public class HomeController {
         }
     
         @GetMapping("/editar/{id}")
+        //La autoridad le da a editar y nos obtiene el id de esa causa y sus datos
         public String editarCausa(@PathVariable Long id, Model model) {
             Causa causa = causaService.obtenerPorId(id).orElse(null);
             model.addAttribute("causa", causa);
             return "modificar"; // Se reutiliza la vista
         }
         @GetMapping("/editarAdmin/{id}")
+        //Obtenemos los datos de la causa que seleccionamos para revisar
         public String editarCausaAdmin(@PathVariable Long id, Model model) {
             Causa causa = causaService.obtenerPorId(id).orElse(null);
             model.addAttribute("causa", causa);
@@ -196,6 +199,7 @@ public class HomeController {
     
         @GetMapping("/reporte")
         public String mostrarReporte(Model model) {
+            //Obtenemos el requerimiento para luego separarlo 
             List<Causa> causasGafi = causaService.obtenerPorRequerimiento("GAFI");
             List<Causa> causasOcde = causaService.obtenerPorRequerimiento("OCDE");
             model.addAttribute("causasGafi", causasGafi);
@@ -205,6 +209,7 @@ public class HomeController {
     
         @GetMapping("/exportar-excel-gafi")
         public ResponseEntity<byte[]> exportarExcelGafi() {
+            //Obtenemos los datos de los requerimientos de GAFI
             try {
                 List<Causa> causasGafi = causaService.obtenerPorRequerimiento("GAFI");
                 return generarResponseEntity(causasGafi, "causas-gafi.xlsx");
@@ -216,6 +221,7 @@ public class HomeController {
     
         @GetMapping("/exportar-excel-ocde")
         public ResponseEntity<byte[]> exportarExcelOcde() {
+            //Obtenemos los datos de los requerimientos de OCDE
             try {
                 List<Causa> causasOcde = causaService.obtenerPorRequerimiento("OCDE");
                 return generarResponseEntity(causasOcde, "causas-ocde.xlsx");
