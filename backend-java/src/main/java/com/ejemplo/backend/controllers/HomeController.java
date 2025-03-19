@@ -29,8 +29,7 @@ import java.util.List;
 @RequestMapping("/")
 public class HomeController {
 
-    private static final Object ExcelBytes = null;
-        @Autowired
+    @Autowired
         private CausaService causaService;
     
         @GetMapping("/")
