@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class CausaService {
@@ -23,5 +24,11 @@ public class CausaService {
 
     public Optional<Causa> obtenerPorId(Long id) {
         return causaRepository.findById(id);
+    }
+
+    public List<Causa> obtenerPorRequerimiento(String requerimiento) {
+        return causaRepository.findAll().stream()
+                .filter(causa -> causa.getRequerimiento().equals(requerimiento))
+                .collect(Collectors.toList());
     }
 }

@@ -97,31 +97,30 @@
                                 <select class="form-select form-select-sm text-center" aria-label="Small select example"
                                     id="lavado" th:field="*{delitoPrecdedente}" disabled>
                                     <option value="">- Seleccione Uno -</option>
-                                    <option value="">Contrabando agravado </option>
-                                    <option value="">Usura </option>
-                                    <option value="">Evasión tributaria </option>
-                                    <option value="">Estafas y otras defraudaciones </option>
-                                    <option value="">Cohecho financiero pasivo</option>
-                                    <option value="">Delitos cambiarios/ Régimen Penal Cambiario</option>
-                                    <option value="">Contrabando simple </option>
-                                    <option value="">Cohecho y tráfico de influencias </option>
-                                    <option value="">Narcotráfico </option>
-                                    <option value="">Falsedades y omisiones de documentación contable </option>
-                                    <option value="">Encubrimiento </option>
-                                    <option value="">Intermediación financiera no autorizada </option>
-                                    <option value="">Asociación ilícita </option>
-                                    <option value="">Encubrimiento de contrabando</option>
-                                    <option value="">Otras transgresiones </option>
-                                    <option value="">Robo cometido por 3 o más personas</option>
-                                    <option value="">Contrabando de estupefacientes o precursores químicos </option>
-                                    <option value="">Negociación incompatible con el ejercicio de funciones públicas
+                                    <option value="Contrabando agravado">Contrabando agravado </option>
+                                    <option value="Usura">Usura </option>
+                                    <option value="Evasión tributaria">Evasión tributaria </option>
+                                    <option value="Estafas y otras defraudaciones">Estafas y otras defraudaciones </option>
+                                    <option value="Cohecho financiero pasivo">Cohecho financiero pasivo</option>
+                                    <option value="Delitos cambiarios/ Régimen Penal Cambiario">Delitos cambiarios/ Régimen Penal Cambiario</option>
+                                    <option value="Contrabando simple">Contrabando simple </option>
+                                    <option value="Cohecho y tráfico de influencias">Cohecho y tráfico de influencias </option>
+                                    <option value="Narcotráfico">Narcotráfico </option>
+                                    <option value="Falsedades y omisiones de documentación contable">Falsedades y omisiones de documentación contable </option>
+                                    <option value="Encubrimiento">Encubrimiento </option>
+                                    <option value="Intermediación financiera no autorizada">Intermediación financiera no autorizada </option>
+                                    <option value="Asociación ilícita">Asociación ilícita </option>
+                                    <option value="Encubrimiento de contrabando">Encubrimiento de contrabando</option>
+                                    <option value="Otras transgresiones">Otras transgresiones </option>
+                                    <option value="Robo cometido por 3 o más personas">Robo cometido por 3 o más personas</option>
+                                    <option value="Contrabando de estupefacientes o precursores químicos">Contrabando de estupefacientes o precursores químicos </option>
+                                    <option value="Negociación incompatible con el ejercicio de funciones públicas">Negociación incompatible con el ejercicio de funciones públicas
                                     </option>
-                                    <option value="">Tráfico ilícito de drogas farmacéuticas a través de internet con
-                                        EEUU
+                                    <option value="Tráfico ilícito de drogas farmacéuticas a través de internet con EEUU">Tráfico ilícito de drogas farmacéuticas a través de internet con EEUU
                                     </option>
-                                    <option value="">Trata de Personas con fines de explotación sexual o laboral
+                                    <option value="Trata de Personas con fines de explotación sexual o laboral">Trata de Personas con fines de explotación sexual o laboral
                                     </option>
-                                    <option value="">Enriquecimiento ilícito de funcionarios y empleados </option>
+                                    <option value="Enriquecimiento ilícito de funcionarios y empleados">Enriquecimiento ilícito de funcionarios y empleados </option>
                                 </select>
                             </td>
                         </tr>
@@ -411,16 +410,16 @@
                             <!-- Tipo de medida -->
                             <td><select class="form-select form-select-sm text-center" id="medidas" onchange="enableMedidas()" th:field="*{tipoMedida}" >
                                     <option value="default">- Seleccione Uno -</option>
-                                    <option value=""> Decomiso con Condena</option>
-                                    <option value="">Decomiso Sin Condena por Otro motivo de suspención o Extinción de la acción penal</option>
-                                    <option value="">Decomiso Sin Condena por Prescripción</option>
-                                    <option value="">Decomiso Sin Condena por Fallecimiento</option>
-                                    <option value="">Inhibición general de bienes</option>
-                                    <option value="">Intervención judicial</option>
-                                    <option value="">Prohibición de contratar</option>
-                                    <option value="">Prohibición de innovar</option>
-                                    <option value="">Secuestro</option>
-                                    <option value="">Otro</option>
+                                    <option value="Decomiso con Condena"> Decomiso con Condena</option>
+                                    <option value="Decomiso Sin Condena por Otro motivo de suspención o Extinción de la acción penal">Decomiso Sin Condena por Otro motivo de suspención o Extinción de la acción penal</option>
+                                    <option value="Decomiso Sin Condena por Prescripción">Decomiso Sin Condena por Prescripción</option>
+                                    <option value="Decomiso Sin Condena por Fallecimiento">Decomiso Sin Condena por Fallecimiento</option>
+                                    <option value="Inhibición general de bienes">Inhibición general de bienes</option>
+                                    <option value="Intervención judicial">Intervención judicial</option>
+                                    <option value="Prohibición de contratar">Prohibición de contratar</option>
+                                    <option value="Prohibición de innovar">Prohibición de innovar</option>
+                                    <option value="Secuestro">Secuestro</option>
+                                    <option value="Otro">Otro</option>
                                 </select> </td>
                             <!-- Fecha de la medida -->
                             <td><input class="form-control text-center grupoMedidas" type="date" th:field="*{fechaMedida}" > </td>
